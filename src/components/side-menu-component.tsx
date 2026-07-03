@@ -61,8 +61,8 @@ const SideMenuComponent = (props: SideMenuComponentProps) => {
             </div>
             <ul className={styles.sideMenuList}>
               <li>
-                <button type="button" className={styles.logoutBtn} onClick={handleWorking} >
-                  대시보드
+                <button type="button" className={styles.logoutBtn} onClick={() => navigate("/my-profile")} >
+                  썸 손절 리포트 받기
                 </button>
               </li>
               <li>
