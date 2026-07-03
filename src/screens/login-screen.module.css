@@ -1,0 +1,99 @@
+.loginApp {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  min-width: 360px;
+  max-width: 480px;
+  background-color: var(--bg-main);
+}
+
+.loginHeader {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: var(--bg-main);
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.btnBack {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-main);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.spacer {
+  width: 24px;
+}
+
+.loginSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 24px 80px;
+}
+
+.loginTitleWrap {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.1); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.1); }
+  70% { transform: scale(1); }
+}
+
+.iconHeart {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  animation: heartBeat 2s infinite;
+}
+
+.loginTitle {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+
+.loginDesc {
+  font-size: 1rem;
+  color: var(--text-sub);
+  line-height: 1.5;
+}
+
+.loginBtnWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.loginFooter {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.loginFooter a {
+  color: var(--primary);
+  text-decoration: underline;
+}

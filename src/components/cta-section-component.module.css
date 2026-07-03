@@ -1,0 +1,163 @@
+.ctaSection {
+  background: linear-gradient(180deg, #ffffff 0%, #fff5f7 100%);
+  padding: 60px 24px 120px;
+}
+
+.timerBanner {
+  background: var(--primary);
+  color: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 24px rgba(242, 136, 155, 0.3);
+}
+
+.timerTitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.timeBlocks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.tBlock {
+  background: #222;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  min-width: 45px;
+  text-align: center;
+}
+
+.tSep {
+  color: #fff;
+  line-height: 40px;
+}
+
+.timerNote {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.formCard {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color);
+}
+
+.ctaNewCard {
+  padding: 32px 24px;
+  text-align: center;
+  border: 2px solid var(--primary);
+}
+
+.ctaNewTitle {
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  color: var(--text-main);
+}
+
+.highlightPink {
+  color: var(--primary);
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.highlightPink::after {
+  content: '';
+  position: absolute;
+  left: -4px;
+  bottom: 2px;
+  width: calc(100% + 8px);
+  height: 12px;
+  background: rgba(242, 136, 155, 0.2);
+  z-index: -1;
+  border-radius: 6px;
+}
+
+.ctaNewDesc {
+  font-size: 0.95rem;
+  color: var(--text-sub);
+  line-height: 1.6;
+  margin-bottom: 32px;
+  word-break: keep-all;
+}
+
+.ctaNewDesc strong {
+  color: var(--primary-dark);
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.btnCtaLock {
+  font-size: 1rem;
+  padding: 22px 16px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.ctaTips {
+  list-style: none;
+  margin-top: 16px;
+  text-align: left;
+  background: #fafafa;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
+}
+
+.ctaTips li {
+  font-size: 0.8rem;
+  color: #888;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+  word-break: keep-all;
+}
+
+.ctaTips li:last-child {
+  margin-bottom: 0;
+}
+
+.btnCta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: var(--primary);
+  color: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(242, 136, 155, 0.4);
+  transition: transform 0.2s;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.btnCta:active {
+  transform: scale(0.98);
+}
+
+.bounce {
+  animation: bounce 2s infinite;
+}

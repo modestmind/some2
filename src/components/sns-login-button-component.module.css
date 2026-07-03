@@ -1,0 +1,54 @@
+.btnSns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.btnSns:active {
+  transform: scale(0.98);
+}
+
+.kakao {
+  background-color: #fee500;
+  color: #000000;
+  box-shadow: 0 4px 10px rgba(254, 229, 0, 0.3);
+}
+
+.google {
+  background-color: #ffffff;
+  color: #333333;
+  border: 1px solid #dddddd;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.icon {
+  position: absolute;
+  left: 20px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconKakao::before {
+  content: '💬';
+  font-size: 1.2rem;
+}
+
+.iconGoogle::before {
+  content: 'G';
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #4285f4;
+}

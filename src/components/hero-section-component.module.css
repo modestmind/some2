@@ -1,0 +1,101 @@
+.hero {
+  text-align: center;
+  position: relative;
+  padding: 100px 24px 60px;
+  overflow: hidden;
+}
+
+.heroVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(50, 0, 0, 0.2), rgba(0, 0, 0, 0.8));
+  z-index: 1;
+}
+
+.badge {
+  background-color: rgba(55, 55, 55, 0.2);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+}
+
+.heroTitle {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 240px;
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
+  line-height: 1.4;
+  word-break: keep-all;
+}
+
+.highlight {
+  position: relative;
+  display: inline-block;
+  color: var(--accent);
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 100%;
+  height: 14px;
+  background: var(--primary);
+  opacity: 0.7;
+  z-index: -1;
+}
+
+.btnCta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: var(--primary);
+  color: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  font-size: 1.15rem;
+  line-height: 1.15rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(242, 136, 155, 0.4);
+  transition: transform 0.2s;
+  position: relative;
+  z-index: 2;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.btnCta:active {
+  transform: scale(0.98);
+}
+
+.bounce {
+  animation: bounce 2s infinite;
+}

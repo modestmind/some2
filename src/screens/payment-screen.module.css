@@ -1,0 +1,280 @@
+.paymentApp {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  min-width: 360px;
+  max-width: 480px;
+  background-color: var(--bg-main);
+}
+
+.paymentHeader {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: var(--bg-main);
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.btnBack {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-main);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.spacer {
+  width: 24px;
+}
+
+.paymentSection {
+  flex: 1;
+  padding: 10px 24px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 1. 분석 완료 알림 */
+.visualAlert {
+  text-align: center;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.iconWrap {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rippleWave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background-color: var(--primary);
+  opacity: 0.2;
+  animation: rippleWave 2s infinite ease-out;
+}
+
+@keyframes rippleWave {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.iconCheck {
+  font-size: 3rem;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 4px 10px rgba(242, 136, 155, 0.4);
+}
+
+.alertTitle {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 12px;
+  word-break: keep-all;
+  line-height: 1.4;
+}
+
+.alertDesc {
+  font-size: 0.95rem;
+  color: var(--text-sub);
+  font-weight: 600;
+  word-break: keep-all;
+}
+
+/* 2. 리포트 열람 절차 카드 */
+.unlockingStep {
+  background-color: var(--bg-body);
+  border-radius: 14px;
+  padding: 30px 24px;
+  text-align: center;
+  margin-bottom: 30px;
+  width: 100%;
+  box-shadow: 0 4px 16px rgba(242, 136, 155, 0.05);
+}
+
+.lockIcon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.pulse {
+  animation: pulseLock 1.5s infinite;
+}
+
+@keyframes pulseLock {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.stepTitle {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin-bottom: 12px;
+}
+
+.stepDesc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-main);
+  word-break: keep-all;
+}
+
+.stepDesc strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* 3. 가격 영역 */
+.priceArea {
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  width: 100%;
+  background: #fffdf5;
+  border: 2px solid var(--accent);
+  border-radius: 16px;
+  padding: 30px 20px 20px;
+  box-shadow: 0 8px 20px rgba(255, 225, 77, 0.2);
+  position: relative;
+  opacity: 0;
+  animation: fadeInUpPrice 0.8s ease forwards 0.5s;
+}
+
+@keyframes fadeInUpPrice {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.priceLabelWrap {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.priceLabel {
+  display: inline-block;
+  background-color: var(--accent);
+  color: #333;
+  font-size: 0.95rem;
+  font-weight: 800;
+  padding: 6px 16px;
+  border-radius: 20px;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(255, 225, 77, 0.4);
+}
+
+.priceAmount {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+
+.priceAmount strong {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-left: 4px;
+}
+
+.priceDesc {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+/* 4. CTA 영역 */
+.ctaArea {
+  width: 100%;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.btnCta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: linear-gradient(135deg, #F2889B, #ff718a);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 800;
+  padding: 22px 20px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(242, 136, 155, 0.5);
+  letter-spacing: -0.5px;
+  font-family: 'Pretendard', sans-serif;
+  transition: transform 0.2s;
+}
+
+.btnCta:active {
+  transform: scale(0.98);
+}
+
+.bounce {
+  animation: bounce 2s infinite;
+}
+
+.subBadge {
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: 12px;
+}
+
+/* 5. 안심 문구 */
+.trustList {
+  list-style: none;
+  width: 100%;
+  padding: 20px;
+  background-color: #fafafa;
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
+}
+
+.trustList li {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.trustList li:last-child {
+  margin-bottom: 0;
+}
+
+.trustIcon {
+  color: #00cc66;
+  font-weight: 800;
+  margin-right: 8px;
+  flex-shrink: 0;
+}

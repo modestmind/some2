@@ -1,0 +1,303 @@
+{
+  "main": {
+    "id": "bcf3a0e72145ed2d",
+    "type": "split",
+    "children": [
+      {
+        "id": "677f4fc358f75c1f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8b5210a5227ab83e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          },
+          {
+            "id": "c23458ef03defe3a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/AI_RULES.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "AI_RULES"
+            }
+          },
+          {
+            "id": "459a4cacb7b6494f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/_작업내역.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "_작업내역"
+            }
+          },
+          {
+            "id": "39c2fd5c7ed15805",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/메인페이지 기획.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "메인페이지 기획"
+            }
+          },
+          {
+            "id": "0daf6c4772fcdaac",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/DB_SCHEMA.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DB_SCHEMA"
+            }
+          },
+          {
+            "id": "ba554eae7c2700ab",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/간편로그인.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "간편로그인"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "1f1cf96411036355",
+    "type": "split",
+    "children": [
+      {
+        "id": "b60590795a47d2b2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c4f64294aac50622",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "파일 탐색기"
+            }
+          },
+          {
+            "id": "d346fadeddbea494",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "검색"
+            }
+          },
+          {
+            "id": "645e6ac0f7f6b59b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "북마크"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "right": {
+    "id": "1f4da642dd9cf582",
+    "type": "split",
+    "children": [
+      {
+        "id": "9ed9d81f78db640a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2920edc954b03b76",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "백링크"
+            }
+          },
+          {
+            "id": "a2db618461790009",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "나가는 링크"
+            }
+          },
+          {
+            "id": "f4444523f64d3255",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "태그"
+            }
+          },
+          {
+            "id": "32cce458d7d9bbd0",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "모든 속성"
+            }
+          },
+          {
+            "id": "77ea41d328366bac",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "개요"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:빠른 전환기 열기": false,
+      "graph:그래프 뷰 열기": false,
+      "canvas:새 캔버스 만들기": false,
+      "daily-notes:오늘의 일일 노트 열기": false,
+      "templates:템플릿 삽입": false,
+      "command-palette:명령어 팔레트 열기": false,
+      "bases:새 베이스 생성하기": false
+    }
+  },
+  "active": "459a4cacb7b6494f",
+  "lastOpenFiles": [
+    "docs/DB_SCHEMA.md",
+    "public/favicon.ico",
+    "src/store/token-slice.ts",
+    "src/screens/write-memo-screen.tsx",
+    "src/store/auth-slice.ts",
+    "docs/_작업내역.md",
+    "src/screens/other-info-screen.tsx.tmp.35880.5803e20c9f5e",
+    "src/hooks/use-other-info-mutation.ts",
+    "src/hooks/use-other-info-mutation.ts.tmp.35880.faf73a0a4189",
+    "src/api/saju-profile-api.ts.tmp.35880.e6b66eaefbca",
+    "src/router.tsx.tmp.35880.a5ae6b5ddb5d",
+    "src/utils/date-util.ts",
+    "docs/메인페이지 기획.md",
+    "docs/간편로그인.md",
+    "node_modules/dayjs/README.md",
+    "node_modules/dayjs/CHANGELOG.md",
+    "dist/img/hero_bg.jpg",
+    "dist/img/header_bg.png",
+    "dist/img/card_4.jpg",
+    "dist/img/card_3.jpg",
+    "dist/img/card_2.jpg",
+    "dist/img/card_1.jpg",
+    "dist/icons.svg",
+    "dist/favicon.svg",
+    "public/img/hero_bg.jpg",
+    "public/img/header_bg.png",
+    "docs/AI_RULES.md",
+    "node_modules/classnames/README.md",
+    "node_modules/classnames/HISTORY.md",
+    "README.md",
+    "docs/DESIGN_GUIDE.md",
+    "docs/ARCHITECTURE_GUIDE.md",
+    "node_modules/react-router/docs/start/declarative/navigating.md",
+    "node_modules/react-router/docs/start/declarative/routing.md",
+    "node_modules/react-router/docs/start/declarative/url-values.md",
+    "node_modules/react-router/docs/start/declarative/installation.md",
+    "node_modules/react-router/docs/start/framework/routing.md",
+    "node_modules/react-router/docs/start/declarative/index.md",
+    "node_modules/react-router/docs/start/framework/testing.md",
+    "node_modules/react-router/docs/start/framework/route-module.md",
+    "node_modules/react-router/docs/start/framework/rendering.md",
+    "node_modules/react-router/docs/start/framework/pending-ui.md",
+    "node_modules/react-router/docs/start/framework/navigating.md",
+    "node_modules/react-router/docs/start/framework/installation.md",
+    "node_modules/react-router/docs/start/framework/index.md"
+  ]
+}

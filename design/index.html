@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>연애판별소 - 썸 손절 판별 리포트</title>
+    <link rel="stylesheet" href="./m/css/common.css" />
+    <link rel="stylesheet" href="./m/css/index.css" />
+    <script type="module" src="./m/js/index.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 상단 네비게이션 -->
+        <header>
+            <div class="logo">연애판별소</div>
+            <div class="header-actions">
+                <button class="btn-login" onclick="location.href='./m/html/login.html'">로그인</button>
+                <button class="btn-hamburger" id="btnHamburger">☰</button>
+            </div>
+        </header>
+
+        <!-- 사이드 메뉴 오버레이 -->
+        <div class="menu-overlay" id="menuOverlay"></div>
+
+        <!-- 사이드 메뉴 -->
+        <div class="side-menu" id="sideMenu">
+            <div class="side-menu-header">
+                <div class="user-info">
+                    <span class="nickname">연판소</span>님
+                </div>
+                <div class="asset-info">
+                    <div class="asset-item">
+                        <span class="label">보유 캐시</span>
+                        <span class="value">0 C</span>
+                    </div>
+                    <div class="asset-item">
+                        <span class="label">보유 포인트</span>
+                        <span class="value">0 P</span>
+                    </div>
+                </div>
+            </div>
+            <ul class="side-menu-list">
+                <li><a href="#">대시보드</a></li>
+                <li><a href="#">마이 리포트</a></li>
+                <li><a href="#">캐시 내역</a></li>
+                <li><a href="#">포인트 내역</a></li>
+                <li><a href="#">마이페이지</a></li>
+                <li><a href="#">로그아웃</a></li>
+            </ul>
+        </div>
+
+        <!-- 1단계: 히어로 섹션 -->
+        <section class="hero">
+            <video class="hero-video" src="./m/img/hero_bg.mp4" poster="./m/img/hero_bg.jpg" autoplay loop muted playsinline></video>
+            <div class="hero-overlay"></div>
+            
+            <div class="badge"># 썸 손절 판별기</div>
+            <h1 class="hero-title">
+                그 사람 마음을 모르겠어💬<br>
+                밤마다 혼자 의미 부여하는 썸은 <br><span class="highlight">이제 그만.</span>
+            </h1>
+
+            <button class="btn-cta bounce" id="heroCtaBtn">내 썸 상대 분석하고 손절 리포트 받기 ➔</button>
+        </section>
+
+        <!-- 1.5단계: 고민 갤러리 -->
+        <section class="worry-gallery">
+            <h2 class="section-title">썸남 때문에 고민이신가요?</h2>
+            <div class="gallery-grid">
+                <div class="gallery-card"><img src="./m/img/card_1.jpg" alt="고민 1"></div>
+                <div class="gallery-card"><img src="./m/img/card_2.jpg" alt="고민 2"></div>
+                <div class="gallery-card"><img src="./m/img/card_3.jpg" alt="고민 3"></div>
+                <div class="gallery-card"><img src="./m/img/card_4.jpg" alt="고민 4"></div>
+            </div>
+        </section>
+
+        <!-- 2단계: 공감 및 문제 제기 -->
+        <section class="pain-point" id="painPointSec">
+            <div class="intro-text">
+                <div style="font-size:2rem; margin-bottom:8px;">💔</div>
+                <span>원래 썸 탈 때 이렇게 마음이 아픈가요?</span>
+                <h2>당신이 밤마다 잠 못 들고<br>앓아누운 진짜 이유</h2>
+            </div>
+
+            <div class="bar-chart">
+                <div class="bar-item">
+                    <div class="bar-label"><span>1위 상대의 애매한 태도</span> <span style="color:var(--primary);">89%</span></div>
+                    <div class="bar-bg"><div class="bar-fill chart-bar" data-width="89" style="background:var(--primary);"></div></div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label"><span>2위 어장관리인지 헷갈릴 때</span> <span style="color:var(--secondary);">72%</span></div>
+                    <div class="bar-bg"><div class="bar-fill chart-bar" data-width="72" style="background:var(--secondary);"></div></div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label"><span>3위 언제까지 기다려야 할지</span> <span style="color:var(--secondary);">55%</span></div>
+                    <div class="bar-bg"><div class="bar-fill chart-bar" data-width="55" style="background:var(--secondary);"></div></div>
+                </div>
+            </div>
+
+            <div class="chat-card" id="chatCard">
+                <div class="bubble left">나 어제 친구들이랑 술 마시다 일찍 잠들었어ㅎㅎ</div>
+                <div class="chat-meta">오후 1:00</div>
+                <div class="bubble right">아 하하 그렇구나! 푹 잤어??</div>
+                <div class="chat-meta"><span style="color:var(--accent);">1</span> 오후 11:45 - 읽지 않음</div>
+                
+                <div class="warning-text">
+                    <span>🔍</span>
+                    <span>'나한테 마음이 있나?' 혼자 온갖 의미 부여를 하고 계신가요? 상대는 이미 당신을 애매한 경계선에 두었을 확률이 높습니다.</span>
+                </div>
+            </div>
+
+            <div class="flow-diagram">
+                <div class="flow-circle"><i>❓</i><span>애매한 관계</span></div>
+                <div class="flow-circle"><i>💭</i><span>혼자 의미 부여</span></div>
+                <div class="flow-circle" style="order:4;"><i>💔</i><span>자존감 하락</span></div>
+                <div class="flow-circle" style="order:2;"><i>⏳</i><span>시간 낭비</span></div>
+            </div>
+
+            <div class="banner-dark">
+                <p>"사귀는 것도 아니고, 끝난 것도 아닌 방치된 시간은 결국 상처로 돌아옵니다."</p>
+                <p style="color:var(--primary); font-weight:700; margin-top:12px;">단 1분 만에 판별하세요.</p>
+            </div>
+        </section>
+
+        <!-- 3단계: 해결책 제시 -->
+        <section class="solution" id="solutionSec">
+            <div class="icon-top">💡</div>
+            <p style="font-weight:600; margin-bottom:8px;">이제 혼자만의 의미 부여는 끝낼 시간.</p>
+            <h2 style="color:var(--primary);">연판소가 제안하는 과학적 명리 분석<br>[썸 손절 판별 리포트]</h2>
+
+            <div class="grid-cards">
+                <div class="s-card s-anim">
+                    <div class="s-card-icon">👤</div>
+                    <h3 style="color:var(--secondary);">상대의 연애 성향</h3>
+                    <p>어장관리 사주 vs 뚝딱이 사주</p>
+                </div>
+                <div class="s-card s-anim" style="transition-delay:0.1s;">
+                    <div class="s-card-icon">📈</div>
+                    <h3 style="color:var(--primary);">현재 관계 흐름</h3>
+                    <p>두 사람의 기운이 맞물리는 타이밍</p>
+                </div>
+                <div class="s-card s-anim" style="transition-delay:0.2s;">
+                    <div class="s-card-icon">⚡️</div>
+                    <h3 style="color:#e6c200;">위험 신호</h3>
+                    <p>미리 걸러내는 똥차 시그널 3가지</p>
+                </div>
+                <div class="s-card s-anim" style="transition-delay:0.3s;">
+                    <div class="s-card-icon">🧭</div>
+                    <h3>맞춤형 행동 가이드</h3>
+                    <p>고백 타이밍 vs 단호한 손절 가이드</p>
+                </div>
+            </div>
+
+            <div class="capsule-wrapper" id="capsuleWrap">
+                <div class="capsule"><span style="color:#fff; z-index:5;">年</span><div class="capsule-fill"></div></div>
+                <div class="capsule"><span style="color:#fff; z-index:5;">月</span><div class="capsule-fill" style="transition-delay:0.2s;"></div></div>
+                <div class="capsule"><span style="color:#fff; z-index:5;">日</span><div class="capsule-fill" style="transition-delay:0.4s;"></div></div>
+                <div class="capsule"><span style="color:#fff; z-index:5;">時</span><div class="capsule-fill" style="transition-delay:0.6s;"></div></div>
+            </div>
+            <p style="font-family:monospace; font-size:0.8rem; margin-bottom:40px;">Python 데이터 기반 60갑자 정밀 분석 완료</p>
+
+            <div class="before-after-box">
+                <div class="ba-row">
+                    <span class="label before">Before: 열람 전</span>
+                    <p>상대방 답장 1개에 하루 종일 불안함</p>
+                    <div class="ba-bar-bg"><div class="ba-bar-fill ba-anim" data-width="45" style="background:#999;"></div></div>
+                </div>
+                <div class="ba-row" style="margin-bottom:0;">
+                    <span class="label after">After: 열람 후</span>
+                    <p>정확한 사주 파악으로 멘탈 케어 & 확신</p>
+                    <div class="ba-bar-bg"><div class="ba-bar-fill ba-anim" data-width="100" style="background:var(--primary);"></div></div>
+                </div>
+            </div>
+            
+            <div style="margin-top:40px; font-size:2rem; animation: bounce 2s infinite;">👇</div>
+        </section>
+
+        <!-- 4단계: 가상 리포트 맛보기 -->
+        <section class="preview" id="previewSec">
+            <div class="intro-text">
+                <div style="font-size:2rem; margin-bottom:12px;">👁️</div>
+                <span>이미 3,249명의 20대 여성이 받아봤어요.</span>
+                <h2 style="color:var(--primary); margin-top:8px;">미리 보는 [썸 손절 판별 리포트]</h2>
+            </div>
+
+            <div class="mockup-card">
+                <div class="mockup-header">
+                    <h3>👤 판별 대상: 썸남 '민우' 사주</h3>
+                </div>
+                <div class="tags">
+                    <span class="tag tooltip-btn" data-info="책임지는 관계를 피하려는 기운이 강합니다.">#회피형사주</span>
+                    <span class="tag tooltip-btn" data-info="겉으로는 무뚝뚝하지만 속은 여린 성향입니다.">#겉촉속바삭</span>
+                    <span class="tag tooltip-btn" data-info="여러 명에게 여지를 두는 도화살이 강합니다.">#어장주의</span>
+                </div>
+                <p style="font-size:0.95rem;">"태어난 일주(日柱) 분석 결과, 이 사람은 겉으로는 다정하지만 관계를 규정짓는 것을 두려워합니다..."</p>
+
+                <div class="chart-container">
+                    <svg class="line-chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none">
+                        <!-- 과거/현재 상승 (오렌지) -->
+                        <path class="chart-path-past" d="M 0 90 Q 50 80 150 20"></path>
+                        <!-- 미래 하강 (핑크 점선) -->
+                        <path class="chart-path-future" d="M 150 20 Q 250 80 300 90" id="futurePath"></path>
+                    </svg>
+                    <div class="chart-warning" id="chartWarn">⚠️ 현재 기운: 급하강 기류</div>
+                </div>
+                <div class="chart-labels">
+                    <span>1주차</span><span>3주차(현재)</span><span>5주차(미래)</span>
+                </div>
+
+                <div class="blur-box">
+                    <h4>🧭 연판소의 최종 판별 가이드</h4>
+                    <p style="font-size:0.85rem; font-weight:600; margin-bottom:12px;">이 관계를 계속 유지할 경우 자존감 보호 수칙:</p>
+                    <div class="blur-text">
+                        1. 먼저 선톡하지 말고 상대방 패턴 관찰하기<br>
+                        2. 이번 주말 약속은 거절하여 텐션 역전하기<br>
+                        3. 3주 뒤 공망 시기에 과감하게 손절 통보하기
+                    </div>
+                    <div class="lock-badge" id="blurCtaBtn">🔒 결제 후 1초 만에 열람</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5단계: 기대효과 -->
+        <section class="benefit" id="benefitSec">
+            <div class="intro-text">
+                <div style="font-size:2rem; margin-bottom:12px;">🕊️</div>
+                <h2 style="color:var(--text-main); font-size:1.3rem;">지나고 나서 후회하면<br>내 시간은 누가 보상해주나요?</h2>
+                <h2 style="color:var(--primary); margin-top:8px;">연판소와 함께하는 스마트한 연애</h2>
+            </div>
+
+            <div class="value-compare">
+                <div class="vc-row">
+                    <div class="vc-title"><span>💔 감정 소모 (우울감)</span> <span>150,000원 상당</span></div>
+                    <div class="vc-bar-wrap"><div class="vc-bar gray" style="width:90%;"></div></div>
+                </div>
+                <div class="vc-row">
+                    <div class="vc-title"><span>⏳ 시간 낭비 (기다림)</span> <span>100,000원 상당</span></div>
+                    <div class="vc-bar-wrap"><div class="vc-bar gray" style="width:70%;"></div></div>
+                </div>
+                <div class="vc-row">
+                    <div class="vc-title"><span>☕ 무의미한 데이트</span> <span>70,000원 상당</span></div>
+                    <div class="vc-bar-wrap"><div class="vc-bar gray" style="width:50%;"></div></div>
+                </div>
+                <div class="vc-divider"></div>
+                <div class="vc-row" style="margin:0;">
+                    <div class="vc-title" style="color:var(--primary);"><span>💖 연판소 판별 리포트</span> <span>커피 한 잔 값!</span></div>
+                    <div class="vc-bar-wrap"><div class="vc-bar pink vc-anim" data-width="15"></div></div>
+                </div>
+            </div>
+
+            <div class="grid-cards">
+                <div class="s-card visible">
+                    <div class="s-card-icon">⏳</div>
+                    <h3 style="margin-top:8px;">시간세이브</h3>
+                    <p>애매한 관계에 황금 같은 시간을 쓰지 않도록 딱 잘라 드립니다.</p>
+                </div>
+                <div class="s-card visible" style="border-color:var(--primary);">
+                    <div class="s-card-icon">🛡️❤️</div>
+                    <h3 style="margin-top:8px;">자존감 철벽 보호</h3>
+                    <p>의미 부여하며 자책하는 시간을 끝냅니다.</p>
+                </div>
+                <div class="s-card visible">
+                    <div class="s-card-icon">⚡</div>
+                    <h3>빠른 의사결정</h3>
+                    <p>직진할 인연인지 안전하게 정리할지 판단해 드립니다.</p>
+                </div>
+                <div class="s-card visible">
+                    <div class="s-card-icon">🔮</div>
+                    <h3>미래 리스크 차단</h3>
+                    <p>몇 달 뒤 눈물 흘릴 유독한 관계를 미리 걸러냅니다.</p>
+                </div>
+            </div>
+
+            <div class="energy-box" id="energyBox">
+                <p style="font-weight:700; color:#555;">리포트 열람 후 나의 자존감 기운</p>
+                <div class="battery-wrap">
+                    <div class="battery-level"></div>
+                </div>
+                <div class="status-text">✨ 주도적인 연애 확신 100%!</div>
+            </div>
+        </section>
+
+        <!-- 6단계: 리얼 유저 후기 -->
+        <section class="reviews">
+            <div class="review-dash">
+                <div class="stars">✦✦✦✦✦</div>
+                <div class="dash-stat">종합 만족도 평점: 4.9 / 5.0</div>
+                <p style="font-size:0.9rem; color:#666;">리포트 누적 발행 건수: 12,400+ 건<br><strong style="color:var(--text-main);">98.4%가 자존감 회복에 도움을 받음</strong></p>
+            </div>
+
+            <div class="filter-chips" id="filterChips">
+                <div class="chip active">#어장관리_탈출</div>
+                <div class="chip">#회피형_대처법</div>
+                <div class="chip">#짝사랑_종결</div>
+            </div>
+
+            <div class="timeline-card">
+                <div class="reviewer">👤 지은님 (24세, 대학생) | ⭐⭐⭐⭐⭐</div>
+                <div class="tl-item before">
+                    <div class="tl-line"></div>
+                    <span class="badge" style="background:#ff4d4d; margin-bottom:8px;">Before</span>
+                    <p>"선톡은 오는데 데이트 신청은 안 하던 썸남... 매일 프사 의미 부여하느라 불면증 폭발"</p>
+                </div>
+                <div class="tl-item after">
+                    <span class="badge" style="background:#00cc66; margin-bottom:8px;">After</span>
+                    <p>"사주 성향대로 연락 끊고 숨고르기 했더니, 장문 카톡 오고 현재 1일 차!🥰"</p>
+                </div>
+            </div>
+
+            <div class="toast-wrap">
+                <div class="toast">
+                    <div class="toast-img">👩‍🦰</div>
+                    <div class="toast-txt">"커피 한 잔 값으로 몇 달 삽질 끝냈습니다."</div>
+                </div>
+                <div class="toast">
+                    <div class="toast-img">👧</div>
+                    <div class="toast-txt">"소름돋게 성격이 다 맞아서 놀랐어요."</div>
+                </div>
+                <div class="toast">
+                    <div class="toast-img">👩</div>
+                    <div class="toast-txt">"덕분에 미련 없이 깔끔하게 손절했습니다!"</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7단계: 결제 및 가입 유도 -->
+        <section class="cta-section">
+            <div class="timer-banner">
+                <div class="timer-title">⏰ 선착순 76% 특별 할인가 마감 직전!</div>
+                <div class="time-blocks">
+                    <div class="t-block" id="t-hr">02</div><div class="t-sep">:</div>
+                    <div class="t-block" id="t-min">14</div><div class="t-sep">:</div>
+                    <div class="t-block" id="t-sec">59</div>
+                </div>
+                <p style="margin-top:12px; font-size:0.85rem;">지금 신청하면 커피 한 잔 가격으로 열람 가능</p>
+            </div>
+
+            <div class="form-card cta-new-card">
+                <!-- 1. 메인 타이틀 -->
+                <h3 class="cta-new-title">
+                    우리의 진짜 관계,<br>
+                    <span class="highlight-pink">사주 분석으로 확실하게 판별해 볼까요?</span>
+                </h3>
+                
+                <!-- 2. 서브 카피 -->
+                <p class="cta-new-desc">
+                    더 이상 밤새 혼자 의미 부여하며 앓아눕지 마세요. <strong>커피 한 잔 값(3,300원)</strong>의 가벼운 리포트 열람 절차로 당신의 소중한 시간과 자존감을 확실하게 지켜낼 정답지를 확인하세요.
+                </p>
+
+                <!-- 3. CTA 버튼 -->
+                <button class="btn-cta bounce btn-cta-lock" id="finalCtaBtn" onclick="location.href='./m/html/payment.html'">
+                    🔒 1초 만에 잠금 해제하고 리포트 확인하기
+                </button>
+
+                <!-- 4. 안심 팁 -->
+                <ul class="cta-tips">
+                    <li>* 본 절차는 카카오페이/토스/네이버페이로 3초 만에 간편하게 완료됩니다.</li>
+                    <li>* 상대방에게는 사주 조회 및 리포트 열람 사실이 절대 알림으로 가지 않으니 안심하세요.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 푸터 -->
+        <footer class="app-footer">
+            <p>COPYRIGHTⓒ연애판별소. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <!-- 툴팁 모달 -->
+    <div class="modal" id="infoModal">
+        <div class="modal-content">
+            <div class="modal-title">상세 설명</div>
+            <div class="modal-body" id="modalText">내용이 들어갑니다.</div>
+            <button class="modal-close" id="closeModal">확인</button>
+        </div>
+    </div>
+
+</body>
+</html>

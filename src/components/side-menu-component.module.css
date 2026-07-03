@@ -1,0 +1,114 @@
+.menuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.menuOverlayActive {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sideMenu {
+  position: fixed;
+  top: 0;
+  right: -70%;
+  width: 70%;
+  height: 100vh;
+  background-color: var(--bg-main);
+  z-index: 1001;
+  transition: right 0.3s ease;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.sideMenuActive {
+  right: 0;
+}
+
+.sideMenuHeader {
+  padding: 30px 20px 20px;
+  background-color: var(--primary-light);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.userInfo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.nickname {
+  color: var(--primary);
+}
+
+.assetInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.assetItem {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.label {
+  color: var(--text-sub);
+}
+
+.value {
+  color: var(--primary-dark);
+}
+
+.sideMenuList {
+  list-style: none;
+  padding: 20px;
+  flex: 1;
+}
+
+.sideMenuList li {
+  margin-bottom: 20px;
+}
+
+.sideMenuList a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: block;
+  transition: color 0.2s;
+}
+
+.sideMenuList a:hover {
+  color: var(--primary);
+}
+
+.logoutBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text-main);
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: 'Pretendard', sans-serif;
+  display: block;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.logoutBtn:hover {
+  color: var(--primary);
+}

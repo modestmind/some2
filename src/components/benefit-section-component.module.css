@@ -1,0 +1,180 @@
+.benefit {
+  background: #fff;
+  padding: 60px 24px;
+}
+
+.introText {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.emoji {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.title1 {
+  color: var(--text-main);
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.title2 {
+  color: var(--primary);
+  font-size: 1.3rem;
+  margin-bottom: 0;
+}
+
+.valueCompare {
+  background: #fdfdfd;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 40px;
+}
+
+.vcRow {
+  margin-bottom: 16px;
+}
+
+.vcTitle {
+  font-size: 0.85rem;
+  color: #555;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.vcTitlePrimary {
+  color: var(--primary);
+}
+
+.vcBarWrap {
+  width: 100%;
+  height: 10px;
+  background: #eee;
+  border-radius: 5px;
+}
+
+.vcBarGray {
+  height: 100%;
+  border-radius: 5px;
+  background: #ccc;
+}
+
+.vcBarPink {
+  height: 100%;
+  border-radius: 5px;
+  background: var(--primary);
+  width: 0;
+  transition: width 1.5s ease;
+}
+
+.vcDivider {
+  height: 1px;
+  background: #eee;
+  margin: 24px 0;
+}
+
+.gridCards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 0;
+}
+
+.sCard {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 20px 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+}
+
+.sCardHighlight {
+  border-color: var(--primary);
+}
+
+.sCardIcon {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.sCard h3 {
+  font-size: 1rem;
+  color: var(--text-main);
+  font-weight: 700;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.sCard p {
+  font-size: 0.85rem;
+  color: var(--text-sub);
+}
+
+.energyBox {
+  text-align: center;
+  background: #fff9fa;
+  padding: 30px 20px;
+  border-radius: 16px;
+  margin-top: 40px;
+  border: 1px solid var(--primary-light);
+}
+
+.energyTitle {
+  font-weight: 700;
+  color: #555;
+}
+
+.batteryWrap {
+  width: 200px;
+  height: 40px;
+  border: 3px solid #333;
+  border-radius: 8px;
+  margin: 16px auto;
+  position: relative;
+  padding: 2px;
+}
+
+.batteryWrap::after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 16px;
+  background: #333;
+  border-radius: 0 3px 3px 0;
+}
+
+.batteryLevel {
+  height: 100%;
+  border-radius: 4px;
+  width: 10%;
+  background: #ccc;
+}
+
+@keyframes batteryCharge {
+  0%   { width: 10%;  background: #ccc; }
+  30%  { width: 100%; background: var(--primary); }
+  100% { width: 100%; background: var(--primary); }
+}
+
+.energyBoxActive .batteryLevel {
+  animation: batteryCharge 4s infinite ease-in-out;
+}
+
+.statusText {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1.1rem;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.energyBoxActive .statusText {
+  opacity: 1;
+}

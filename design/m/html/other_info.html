@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>연애판별소 - 상대방 정보 입력</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/my_other.css" />
+    <script type="module" src="../js/my_other.js"></script>
+</head>
+<body>
+    <div id="app" class="info-app">
+        <!-- 상단 네비게이션 (뒤로가기) -->
+        <header class="info-header">
+            <button class="btn-back" onclick="history.back()">←</button>
+            <div class="logo">연애판별소</div>
+            <div style="width: 24px;"></div> <!-- 타이틀 중앙 정렬용 여백 -->
+        </header>
+
+        <section class="info-section">
+            <div class="info-title-wrap">
+                <h1 class="info-title">상대방 정보 입력</h1>
+                <p class="info-desc">상대방의 고유한 기운을 불러올 차례예요.</p>
+            </div>
+
+            <div class="form-container">
+                <div class="form-group">
+                    <label class="form-label">이름</label>
+                    <input type="text" class="input-box" placeholder="이름을 입력해주세요" id="inputName">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">성별</label>
+                    <div class="toggle-group">
+                        <input type="radio" name="gender" id="genderF" value="F" class="hide-radio">
+                        <label for="genderF" class="tgl-btn">여성 👩</label>
+                        
+                        <input type="radio" name="gender" id="genderM" value="M" class="hide-radio" checked>
+                        <label for="genderM" class="tgl-btn">남성 👦</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">생년월일</label>
+                    <div class="select-group">
+                        <select class="select-box" id="selYear">
+                            <option value="">연도</option>
+                        </select>
+                        <select class="select-box" id="selMonth">
+                            <option value="">월</option>
+                        </select>
+                        <select class="select-box" id="selDay">
+                            <option value="">일</option>
+                        </select>
+                    </div>
+                    <div class="checkbox-wrap mt-2" style="gap: 16px;">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="chkLunar">
+                            <span class="custom-checkbox"></span>
+                            음력
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="chkLunarLeap">
+                            <span class="custom-checkbox"></span>
+                            음력(윤달)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">태어난 시간</label>
+                    <div class="select-group">
+                        <select class="select-box" id="selHour">
+                            <option value="">시</option>
+                        </select>
+                        <select class="select-box" id="selMinute">
+                            <option value="">분</option>
+                        </select>
+                    </div>
+                    <div class="checkbox-wrap mt-2">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="chkUnknownTime">
+                            <span class="custom-checkbox"></span>
+                            시간을 정확히 모름
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">나와의 관계 🧭</label>
+                    <select class="select-box full-width" id="selRelation">
+                        <option value="">선택해주세요</option>
+                        <option>애매하게 연락만 하는 썸</option>
+                        <option>어장관리가 의심되는 썸</option>
+                        <option>내가 일방적으로 좋아하는 짝사랑</option>
+                        <option>연인</option>
+                        <option>기타</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">현재 고민 상태</label>
+                    <textarea class="textarea-box" id="txtWorry" placeholder="현재 관계 상태나 고민을 적어주시면 알고리즘에 반영됩니다. (선택사항)"></textarea>
+                </div>
+                
+                <button class="btn-cta bounce mt-4" id="btnReport">진단 후 리포트 확인하기</button>
+            </div>
+            
+            <div class="info-footer">
+                <p>🔒 연애판별소는 개인정보 보호를 최우선으로 합니다.<br>수집된 정보는 암호화되어 안전하게 관리됩니다.</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

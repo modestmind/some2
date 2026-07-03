@@ -1,0 +1,209 @@
+.infoApp {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  min-width: 360px;
+  max-width: 480px;
+  background-color: var(--bg-main);
+}
+
+.infoHeader {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: var(--bg-main);
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.btnBack {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-main);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.spacer {
+  width: 24px;
+}
+
+.infoSection {
+  flex: 1;
+  padding: 24px 24px 60px;
+}
+
+.infoTitleWrap {
+  margin-bottom: 32px;
+}
+
+.infoTitle {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+
+.infoDesc {
+  font-size: 0.95rem;
+  color: var(--text-sub);
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+.formContainer {
+  background: #fff;
+}
+
+.formGroup {
+  margin-bottom: 28px;
+}
+
+.formLabel {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+
+.inputBox {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: #fafafa;
+  transition: all 0.2s;
+  font-family: 'Pretendard', sans-serif;
+  color: var(--text-main);
+}
+
+.inputBox:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(242, 136, 155, 0.1);
+}
+
+.inputBoxError {
+  border-color: var(--primary);
+}
+
+.errorText {
+  font-size: 0.85rem;
+  color: var(--primary);
+  margin-top: 8px;
+}
+
+.toggleGroup {
+  display: flex;
+  gap: 12px;
+}
+
+.tglBtn {
+  flex: 1;
+  padding: 16px;
+  text-align: center;
+  border-radius: 12px;
+  background: #f4f4f4;
+  color: #777;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.tglBtnActive {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.selectGroup {
+  display: flex;
+  gap: 8px;
+}
+
+.selectBox {
+  flex: 1;
+  padding: 14px 10px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  background: #fafafa;
+  font-family: 'Pretendard', sans-serif;
+  color: var(--text-main);
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
+
+.selectBox:disabled {
+  background-color: #eee;
+  color: #aaa;
+}
+
+.selectBox:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.checkboxWrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.btnCta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: var(--primary);
+  color: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(242, 136, 155, 0.4);
+  transition: transform 0.2s;
+  font-family: 'Pretendard', sans-serif;
+  margin-top: 32px;
+}
+
+.btnCta:active {
+  transform: scale(0.98);
+}
+
+.bounce {
+  animation: bounce 2s infinite;
+}
+
+.infoFooter {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid #eee;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #999;
+  line-height: 1.5;
+}

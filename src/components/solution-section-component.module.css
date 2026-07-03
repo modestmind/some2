@@ -1,0 +1,171 @@
+.solution {
+  background: #fff;
+  text-align: center;
+  padding: 60px 24px;
+}
+
+.iconTop {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  color: var(--accent);
+}
+
+.subTitle {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.mainTitle {
+  color: var(--primary);
+}
+
+.gridCards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 36px;
+  text-align: left;
+}
+
+.sCard {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 20px 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.6s;
+}
+
+.sCardVisible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.sCardIcon {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+.sCard h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.sCard p {
+  font-size: 0.85rem;
+  color: var(--text-sub);
+}
+
+.capsuleWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 40px 0;
+}
+
+.capsule {
+  width: 40px;
+  height: 120px;
+  background: #f4f4f4;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.capsule span {
+  z-index: 2;
+  font-weight: 800;
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+  position: relative;
+}
+
+.capsuleFill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(to top, var(--primary), var(--secondary));
+  transition: height 1.5s ease;
+  z-index: 1;
+}
+
+.capsuleNote {
+  font-family: monospace;
+  font-size: 0.8rem;
+  margin-bottom: 40px;
+  color: var(--text-sub);
+}
+
+.beforeAfterBox {
+  background: #fdfdfd;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: left;
+}
+
+.baRow {
+  margin-bottom: 16px;
+}
+
+.baRow:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+
+.labelBefore {
+  background: #eee;
+  color: #555;
+}
+
+.labelAfter {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.baRow p {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.baBarBg {
+  width: 100%;
+  height: 14px;
+  background: #eee;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.baBarFill {
+  height: 100%;
+  border-radius: 7px;
+  width: 0;
+  transition: width 1.5s ease;
+}
+
+.arrowDown {
+  margin-top: 40px;
+  font-size: 2rem;
+  animation: bounce 2s infinite;
+}
