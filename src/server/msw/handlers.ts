@@ -110,6 +110,10 @@ const handlers = [
       updated_at: getDateTime(),
     };
 
+    if (is_self === "Y") {
+      lsDatabase.saju_profiles = lsDatabase.saju_profiles.filter((sp) => sp.user_id !== foundSession.user_id);
+    }
+
     lsDatabase.saju_profiles.push(newProfile);
     saveDatabase(lsDatabase);
 
