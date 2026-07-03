@@ -6,7 +6,7 @@ import { toastActions } from "../store/toast-slice";
 const ToastComponent = () => {
   const dispatch = useDispatch();
 
-  const { message, code } = useSelector((state: StateType) => state.toast);
+  const { message } = useSelector((state: StateType) => state.toast);
 
   useEffect(() => {
     if (message === null) {
