@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { saveMyInfoRequest } from "../api/saju-profile-api";
 import type { SaveMyInfoRequestData } from "../api/saju-profile-api";
 
-const useMyInfoMutation = () => {
+const useSaveMyProfile = () => {
   const { isPending, mutate } = useMutation({
     mutationFn: async (data: SaveMyInfoRequestData) => {
       return await saveMyInfoRequest(data);
@@ -12,4 +12,4 @@ const useMyInfoMutation = () => {
   return { isPending, mutate };
 };
 
-export default useMyInfoMutation;
+export default useSaveMyProfile;

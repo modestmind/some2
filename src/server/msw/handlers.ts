@@ -51,7 +51,7 @@ const handlers = [
 
     saveDatabase(lsDatabase);
 
-    return HttpResponse.json({ token });
+    return HttpResponse.json({ token, nickname: loginUser.nickname });
   }),
 
   http.post("/api/logout", async ({ request }) => {
@@ -114,6 +114,26 @@ const handlers = [
     saveDatabase(lsDatabase);
 
     return HttpResponse.json({ saju_profile: newProfile }, { status: 201 });
+  }),
+
+  http.get("/api/my-profile", async ({ request }) => {
+    await delay(500);
+
+    const auth = request.headers.get("Authorization");
+    const token = auth?.replace("Bearer ", "");
+
+    const foundSession = lsDatabase.sessions.find(
+      (session) => session.token === token
+    );
+    if (foundSession == null) {
+      return HttpResponse.json({ errorCode: "INVALID_TOKEN"}, { status: 401 });
+    }
+
+    const myProfile = lsDatabase.saju_profiles.find(
+      (pf) => pf.user_id === foundSession.user_id && pf.is_self === "Y"
+    );
+
+    return HttpResponse.json( { myProfile }, { status: 201 });
   }),
 
 ];

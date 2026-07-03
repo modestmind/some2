@@ -6,8 +6,8 @@ const client = axios.create({
 });
 
 client.interceptors.request.use((config) => {
-  if (store.getState().token.token !== null) {
-    config.headers.Authorization = `Bearer ${store.getState().token.token}`;
+  if (store.getState().auth.token !== null) {
+    config.headers.Authorization = `Bearer ${store.getState().auth.token}`;
   }
   return config;
 });

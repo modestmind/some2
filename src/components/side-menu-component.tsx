@@ -15,7 +15,8 @@ type SideMenuComponentProps = {
 const SideMenuComponent = (props: SideMenuComponentProps) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const token = useSelector((state: StateType) => state.token.token);
+  const token = useSelector((state: StateType) => state.auth.token);
+  const nickname = useSelector((state: StateType) => state.auth.nickname);
   const { isOpen, onClose } = props;
 
   const { mutate: logoutMutate } = useLogout();
@@ -45,7 +46,7 @@ const SideMenuComponent = (props: SideMenuComponentProps) => {
           <>
             <div className={styles.sideMenuHeader}>
               <div className={styles.userInfo}>
-                <span className={styles.nickname}>연판소</span>님
+                <span className={styles.nickname}>{nickname}</span>님
               </div>
               <div className={styles.assetInfo}>
                 <div className={styles.assetItem}>

@@ -12,6 +12,7 @@ export const loginRequest = async (data: {
 
     const resDataSchema = z.object({
       token: z.string(),
+      nickname: z.string(),
     });
 
     const parsed = resDataSchema.safeParse(res.data);

@@ -1,4 +1,4 @@
-.infoApp {
+.profileApp {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -8,7 +8,7 @@
   background-color: var(--bg-main);
 }
 
-.infoHeader {
+.profileHeader {
   position: sticky;
   top: 0;
   display: flex;
@@ -39,23 +39,23 @@
   width: 24px;
 }
 
-.infoSection {
+.profileSection {
   flex: 1;
   padding: 24px 24px 60px;
 }
 
-.infoTitleWrap {
+.profileTitleWrap {
   margin-bottom: 32px;
 }
 
-.infoTitle {
+.profileTitle {
   font-size: 1.6rem;
   font-weight: 800;
   color: var(--text-main);
   margin-bottom: 12px;
 }
 
-.infoDesc {
+.profileDesc {
   font-size: 0.95rem;
   color: var(--text-sub);
   line-height: 1.6;
@@ -154,6 +154,11 @@
   background-size: 16px;
 }
 
+.selectBoxFull {
+  width: 100%;
+  flex: none;
+}
+
 .selectBox:disabled {
   background-color: #eee;
   color: #aaa;
@@ -162,6 +167,25 @@
 .selectBox:focus {
   outline: none;
   border-color: var(--primary);
+}
+
+.textareaBox {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  background: #fafafa;
+  height: 100px;
+  resize: none;
+  font-family: 'Pretendard', sans-serif;
+  color: var(--text-main);
+}
+
+.textareaBox:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: #fff;
 }
 
 .checkboxWrap {
@@ -198,7 +222,7 @@
   animation: bounce 2s infinite;
 }
 
-.infoFooter {
+.profileFooter {
   margin-top: 40px;
   padding-top: 24px;
   border-top: 1px solid #eee;

@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { tokenActions } from "../store/token-slice";
+import { tokenActions } from "../store/auth-slice";
 import { useMutation } from "@tanstack/react-query";
 import { setLocalStorage } from "../utils/local-storage";
 import { loginRequest } from "../api/login-api";
@@ -17,9 +17,10 @@ const useLogin = () => {
       return res;
     },
     onSuccess: (res) => {
-      const { token } = res;
-      dispatch(tokenActions.set({ token }));
+      const { token, nickname } = res;
+      dispatch(tokenActions.set({ token, nickname }));
       setLocalStorage("token", token);
+      setLocalStorage("nickname", nickname);
     },
   });
 

@@ -8,7 +8,7 @@ type MainHeaderComponentProps = {
 };
 
 const MainHeaderComponent = (props: MainHeaderComponentProps) => {
-  const token = useSelector((state: StateType) => state.token.token);
+  const token = useSelector((state: StateType) => state.auth.token);
   const { onLoginClick, onMenuOpen } = props;
 
   return (

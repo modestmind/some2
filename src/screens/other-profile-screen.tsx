@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { Navigate, useNavigate, useLocation } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import z from "zod";
 import classnames from "classnames/bind";
-import styles from "./my-info-screen.module.css";
+import styles from "./other-profile-screen.module.css";
 import CustomCheckboxComponent from "../components/custom-checkbox-component";
+import ToastComponent from "../components/toast-component";
 import { toastActions } from "../store/toast-slice";
 import { parseZodError } from "../utils/zod-error";
-import useMyInfoMutation from "../hooks/use-my-info-mutation";
+import useSaveOtherProfile from "../hooks/use-save-other-profile";
 import type { StateType } from "../store/store";
 
 const cx = classnames.bind(styles);
@@ -19,18 +20,25 @@ const days = Array.from({ length: 31 }, (_, i) => i + 1);
 const hours = Array.from({ length: 24 }, (_, i) => i);
 const minutes = Array.from({ length: 60 }, (_, i) => i);
 
-const saveInfoSchema = z.object({
+const relationOptions = [
+  "애매하게 연락만 하는 썸",
+  "어장관리가 의심되는 썸",
+  "내가 일방적으로 좋아하는 짝사랑",
+  "연인",
+  "기타",
+];
+
+const reportSchema = z.object({
   name: z.string().min(1, "이름을 입력해주세요."),
 });
 
-const MyInfoScreen = () => {
+const OtherProfileScreen = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const dispatch = useDispatch();
 
-  const token = useSelector((state: StateType) => state.token.token);
+  const token = useSelector((state: StateType) => state.auth.token);
   const [name, setName] = useState("");
-  const [gender, setGender] = useState<"F" | "M">("F");
+  const [gender, setGender] = useState<"F" | "M">("M");
   const [year, setYear] = useState("");
   const [month, setMonth] = useState("");
   const [day, setDay] = useState("");
@@ -39,9 +47,11 @@ const MyInfoScreen = () => {
   const [hour, setHour] = useState("");
   const [minute, setMinute] = useState("");
   const [isUnknownTime, setIsUnknownTime] = useState(false);
+  const [relation, setRelation] = useState("");
+  const [worry, setWorry] = useState("");
   const [zodError, setZodError] = useState<z.ZodError | null>(null);
 
-  const { isPending, mutate: saveMyInfoMutate } = useMyInfoMutation();
+  const { isPending, mutate: saveOtherProfileMutate } = useSaveOtherProfile();
 
   if (token === null) {
     return <Navigate to="/login" state={{ from: location.pathname }} replace />;
@@ -65,8 +75,8 @@ const MyInfoScreen = () => {
     }
   };
 
-  const handleSaveInfo = () => {
-    const result = saveInfoSchema.safeParse({ name });
+  const handleSubmitReport = () => {
+    const result = reportSchema.safeParse({ name });
     if (result.success === false) {
       setZodError(result.error);
       return;
@@ -83,12 +93,21 @@ const MyInfoScreen = () => {
         ? ""
         : `${hour.padStart(2, "0")}:${minute.padStart(2, "0")}`;
 
-    saveMyInfoMutate(
-      { name: result.data.name, gender, birth_date, calendar_type, birth_time },
+    saveOtherProfileMutate(
+      {
+        name: result.data.name,
+        gender,
+        birth_date,
+        calendar_type,
+        birth_time,
+        relationship_type: relation,
+        relation_duration: "",
+        relationship_status: worry,
+      },
       {
         onSuccess: () => {
-          dispatch(toastActions.show({ message: "내 정보가 성공적으로 저장되었습니다.", code: 200 }));
-          navigate("/other-info");
+          dispatch(toastActions.show({ message: "데이터 분석을 시작합니다...", code: 200 }));
+          navigate("/payment");
         },
         onError: () => {
           dispatch(toastActions.show({ message: "저장 중 오류가 발생했습니다. 다시 시도해 주세요.", code: 500 }));
@@ -98,9 +117,10 @@ const MyInfoScreen = () => {
   };
 
   return (
-    <div className={cx("infoApp")}>
+    <div className={cx("profileApp")}>
+      <ToastComponent />
 
-      <header className={cx("infoHeader")}>
+      <header className={cx("profileHeader")}>
         <button type="button" className={cx("btnBack")} onClick={() => navigate(-1)}>
           ←
         </button>
@@ -108,13 +128,10 @@ const MyInfoScreen = () => {
         <div className={cx("spacer")} />
       </header>
 
-      <section className={cx("infoSection")}>
-        <div className={cx("infoTitleWrap")}>
-          <h1 className={cx("infoTitle")}>나의 정보 입력</h1>
-          <p className={cx("infoDesc")}>
-            우주가 준 고유한 기운을 분석하기 위해 꼭 필요한 정보예요.<br />
-            입력하신 정보는 오직 사주 분석을 위해서만 소중히 사용되니 안심하세요.
-          </p>
+      <section className={cx("profileSection")}>
+        <div className={cx("profileTitleWrap")}>
+          <h1 className={cx("profileTitle")}>상대방 정보 입력</h1>
+          <p className={cx("profileDesc")}>상대방의 고유한 기운을 불러올 차례예요.</p>
         </div>
 
         <div className={cx("formContainer")}>
@@ -239,17 +256,41 @@ const MyInfoScreen = () => {
             </div>
           </div>
 
+          <div className={cx("formGroup")}>
+            <label className={cx("formLabel")}>나와의 관계 🧭</label>
+            <select
+              className={cx("selectBox", "selectBoxFull")}
+              value={relation}
+              onChange={(e) => setRelation(e.target.value)}
+            >
+              <option value="">선택해주세요</option>
+              {relationOptions.map((opt) => (
+                <option key={opt} value={opt}>{opt}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className={cx("formGroup")}>
+            <label className={cx("formLabel")}>현재 고민 상태</label>
+            <textarea
+              className={cx("textareaBox")}
+              placeholder="현재 관계 상태나 고민을 적어주시면 알고리즘에 반영됩니다. (선택사항)"
+              value={worry}
+              onChange={(e) => setWorry(e.target.value)}
+            />
+          </div>
+
           <button
             type="button"
             className={cx("btnCta", { bounce: !isPending })}
             disabled={isPending}
-            onClick={handleSaveInfo}
+            onClick={handleSubmitReport}
           >
-            {isPending ? "저장 중..." : "내 정보 저장"}
+            {isPending ? "분석 중..." : "진단 후 리포트 확인하기"}
           </button>
         </div>
 
-        <div className={cx("infoFooter")}>
+        <div className={cx("profileFooter")}>
           <p>
             🔒 연애판별소는 개인정보 보호를 최우선으로 합니다.<br />
             수집된 정보는 암호화되어 안전하게 관리됩니다.
@@ -260,4 +301,4 @@ const MyInfoScreen = () => {
   );
 };
 
-export default MyInfoScreen;
+export default OtherProfileScreen;

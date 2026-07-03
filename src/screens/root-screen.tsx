@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import type { StateType } from "../store/store";
 
 const RootScreen = () => {
-  const token = useSelector((state: StateType) => state.token.token);
+  const token = useSelector((state: StateType) => state.auth.token);
 
   return <Navigate to={token === null ? "/main" : "/memo"} replace={true} />;
 };

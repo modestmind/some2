@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
-import { tokenActions } from "../store/token-slice";
+import { tokenActions } from "../store/auth-slice";
 import { logoutRequest } from "../api/logout-api";
 import { removeLocalStorage } from "../utils/local-storage";
 
@@ -14,6 +14,7 @@ const useLogout = () => {
     onSettled: () => {
       dispatch(tokenActions.clear());
       removeLocalStorage("token");
+      removeLocalStorage("nickname");
     },
   });
 

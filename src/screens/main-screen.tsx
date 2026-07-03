@@ -54,7 +54,7 @@ const MainScreen = () => {
       <ReviewsSectionComponent />
       <CtaSectionComponent
         ctaRef={ctaRef}
-        onFinalCtaClick={() => navigate("/my-info")}
+        onFinalCtaClick={() => navigate("/my-profile")}
       />
       <footer className={styles.appFooter}>
         <p>COPYRIGHTⓒ연애판별소. All rights reserved.</p>

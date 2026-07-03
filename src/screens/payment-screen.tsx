@@ -16,7 +16,7 @@ const PaymentScreen = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const token = useSelector((state: StateType) => state.token.token);
+  const token = useSelector((state: StateType) => state.auth.token);
 
   if (token === null) {
     return <Navigate to="/login" state={{ from: location.pathname }} replace />;
@@ -25,7 +25,7 @@ const PaymentScreen = () => {
   const handleActivate = () => {
     dispatch(
       toastActions.show({
-        message: "카카오페이 / 토스페이 / 네이버페이 결제 모듈이 실행됩니다.",
+        message: "결제 모듈 준비중 입니다.",
         code: 200,
       })
     );
@@ -39,7 +39,9 @@ const PaymentScreen = () => {
           ←
         </button>
         <div className={cx("logo")}>연애판별소</div>
-        <div className={cx("spacer")} />
+        <button type="button" className={cx("btnBack")} onClick={() => navigate("/")}>
+          🏠
+        </button>
       </header>
 
       <section className={cx("paymentSection")}>

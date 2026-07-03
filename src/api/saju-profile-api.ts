@@ -10,17 +10,6 @@ export type SaveMyInfoRequestData = {
   birth_time: string;
 };
 
-export type SaveOtherInfoRequestData = {
-  name: string;
-  gender: "F" | "M";
-  birth_date: string;
-  calendar_type: "solar" | "lunar" | "lunar_leap";
-  birth_time: string;
-  relationship_type: string;
-  relation_duration: string;
-  relationship_status: string;
-};
-
 const sajuProfileResponseSchema = z.object({
   saju_profile: z.object({
     saju_profile_id: z.number(),
@@ -47,6 +36,17 @@ export const saveMyInfoRequest = async (data: SaveMyInfoRequestData) => {
   }
 };
 
+export type SaveOtherInfoRequestData = {
+  name: string;
+  gender: "F" | "M";
+  birth_date: string;
+  calendar_type: "solar" | "lunar" | "lunar_leap";
+  birth_time: string;
+  relationship_type: string;
+  relation_duration: string;
+  relationship_status: string;
+};
+
 export const saveOtherInfoRequest = async (data: SaveOtherInfoRequestData) => {
   try {
     const res = await client.post("/saju-profiles", {
@@ -58,6 +58,27 @@ export const saveOtherInfoRequest = async (data: SaveOtherInfoRequestData) => {
     if (parsed.success === false) throw parsed.error;
 
     return parsed.data;
+  } catch (err) {
+    if (isAxiosError(err)) throw new ApiError(err.response?.data.errorCode);
+    throw err;
+  }
+};
+
+export type MyProfileResponse = {
+  myProfile?: {
+    name: string;
+    gender: "F" | "M";
+    birth_date: string;
+    calendar_type: "solar" | "lunar" | "lunar_leap";
+    birth_time: string;
+  };
+};
+
+export const getMyProfileRequest = async (): Promise<MyProfileResponse> => {
+  try {
+    const res = await client.get("/my-profile");
+
+    return res.data;
   } catch (err) {
     if (isAxiosError(err)) throw new ApiError(err.response?.data.errorCode);
     throw err;
