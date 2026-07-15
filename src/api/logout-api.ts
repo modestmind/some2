@@ -3,11 +3,11 @@ import client, { ApiError } from "./client";
 
 export const logoutRequest = async () => {
   try {
-    const res = await client.post("/logout");
+    const res = await client.post("/auth/logout");
     return res.data;
   } catch (err) {
     if (isAxiosError(err)) {
-      throw new ApiError(err.response?.data.errorCode);
+      throw new ApiError(err.response?.data.message);
     }
     throw err;
   }

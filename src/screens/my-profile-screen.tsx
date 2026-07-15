@@ -22,7 +22,19 @@ const minutes = Array.from({ length: 60 }, (_, i) => i);
 
 const saveProfileSchema = z.object({
   name: z.string().min(1, "이름을 입력해주세요."),
-});
+  year: z.string(),
+  month: z.string(),
+  day: z.string(),
+  hour: z.string(),
+  minute: z.string(),
+  isUnknownTime: z.boolean(),
+}).refine(
+  (data) => data.year !== "" && data.month !== "" && data.day !== "",
+  { message: "생년월일을 입력해 주세요", path: ["birthDate"] }
+).refine(
+  (data) => data.isUnknownTime || (data.hour !== "" && data.minute !== ""),
+  { message: "태어난 시간을 입력해 주세요", path: ["birthTime"] }
+);
 
 const MyProfileScreen = () => {
   const navigate = useNavigate();
@@ -46,7 +58,7 @@ const MyProfileScreen = () => {
   const { isPending, mutate: saveMyProfileMutate } = useSaveMyProfile();
 
   useEffect(() => {
-    const profile = profileData?.myProfile;
+    const profile = profileData?.saju_profile;
     if (!profile) return;
 
     setName(profile.name);
@@ -103,9 +115,18 @@ const MyProfileScreen = () => {
   };
 
   const handleSaveProfile = () => {
-    const result = saveProfileSchema.safeParse({ name });
+    const result = saveProfileSchema.safeParse({ name, year, month, day, hour, minute, isUnknownTime });
     if (result.success === false) {
-      setZodError(result.error);
+      const nameIssue = result.error.issues.find((i) => i.path.includes("name"));
+      if (nameIssue) {
+        setZodError(result.error);
+        return;
+      }
+      setZodError(null);
+      const firstIssue = result.error.issues[0];
+      if (firstIssue) {
+        dispatch(toastActions.show({ message: firstIssue.message, code: 400 }));
+      }
       return;
     }
     setZodError(null);
@@ -127,8 +148,8 @@ const MyProfileScreen = () => {
           dispatch(toastActions.show({ message: "내 정보가 성공적으로 저장되었습니다.", code: 200 }));
           navigate("/other-profile");
         },
-        onError: () => {
-          dispatch(toastActions.show({ message: "저장 중 오류가 발생했습니다. 다시 시도해 주세요.", code: 500 }));
+        onError: (err) => {
+          dispatch(toastActions.show({ message: err.message, code: 500 }));
         },
       },
     );

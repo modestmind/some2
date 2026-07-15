@@ -24,8 +24,8 @@ const render = () => {
 };
 
 const run = async () => {
-  const worker = setupWorker(...handlers);
-  await worker.start();
+  // const worker = setupWorker(...handlers);
+  // await worker.start();
   render();
 };
 

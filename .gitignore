@@ -1,7 +1,9 @@
+# My Setting
 .env
 .http
 .obsidian
 docs
+test
 design
 node_modules
 dist

@@ -1,5 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { type StateType } from "../store/store";
+import { verifyTokenRequest } from "../api/auth-api";
+import { getLocalStorage } from "../utils/local-storage";
+import { scheduleSilentRefresh } from "../utils/token-util";
 import styles from "./main-screen.module.css";
 import MainHeaderComponent from "../components/main-header-component";
 import SideMenuComponent from "../components/side-menu-component";
@@ -20,6 +25,17 @@ const MainScreen = () => {
   const [modalMessage, setModalMessage] = useState<string | null>(null);
 
   const ctaRef = useRef<HTMLElement>(null);
+  const token = useSelector((state: StateType) => state.auth.token);
+
+  useEffect(() => {
+    if (!token) return;
+    verifyTokenRequest().then(() => {
+      const expiresAt = getLocalStorage<number>("token_expires_at");
+      if (expiresAt) {
+        scheduleSilentRefresh(expiresAt);
+      }
+    });
+  }, [token]);
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";

@@ -30,7 +30,23 @@ const relationOptions = [
 
 const reportSchema = z.object({
   name: z.string().min(1, "이름을 입력해주세요."),
-});
+  year: z.string(),
+  month: z.string(),
+  day: z.string(),
+  hour: z.string(),
+  minute: z.string(),
+  isUnknownTime: z.boolean(),
+  relation: z.string(),
+}).refine(
+  (data) => data.year !== "" && data.month !== "" && data.day !== "",
+  { message: "생년월일을 입력해 주세요", path: ["birthDate"] }
+).refine(
+  (data) => data.isUnknownTime || (data.hour !== "" && data.minute !== ""),
+  { message: "태어난 시간을 입력해 주세요", path: ["birthTime"] }
+).refine(
+  (data) => data.relation !== "",
+  { message: "나와의 관계를 선택해 주세요", path: ["relation"] }
+);
 
 const OtherProfileScreen = () => {
   const navigate = useNavigate();
@@ -76,9 +92,18 @@ const OtherProfileScreen = () => {
   };
 
   const handleSubmitReport = () => {
-    const result = reportSchema.safeParse({ name });
+    const result = reportSchema.safeParse({ name, year, month, day, hour, minute, isUnknownTime, relation });
     if (result.success === false) {
-      setZodError(result.error);
+      const nameIssue = result.error.issues.find((i) => i.path.includes("name"));
+      if (nameIssue) {
+        setZodError(result.error);
+        return;
+      }
+      setZodError(null);
+      const firstIssue = result.error.issues[0];
+      if (firstIssue) {
+        dispatch(toastActions.show({ message: firstIssue.message, code: 400 }));
+      }
       return;
     }
     setZodError(null);

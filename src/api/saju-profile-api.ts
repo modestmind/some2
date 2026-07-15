@@ -12,13 +12,13 @@ export type SaveMyInfoRequestData = {
 
 const sajuProfileResponseSchema = z.object({
   saju_profile: z.object({
-    saju_profile_id: z.number(),
+    saju_profile_id: z.coerce.number(),
   }),
 });
 
 export const saveMyInfoRequest = async (data: SaveMyInfoRequestData) => {
   try {
-    const res = await client.post("/saju-profiles", {
+    const res = await client.post("/saju/profile", {
       ...data,
       is_self: "Y",
       relationship_type: "",
@@ -31,7 +31,7 @@ export const saveMyInfoRequest = async (data: SaveMyInfoRequestData) => {
 
     return parsed.data;
   } catch (err) {
-    if (isAxiosError(err)) throw new ApiError(err.response?.data.errorCode);
+    if (isAxiosError(err)) throw new ApiError(err.response?.data.message);
     throw err;
   }
 };
@@ -49,7 +49,7 @@ export type SaveOtherInfoRequestData = {
 
 export const saveOtherInfoRequest = async (data: SaveOtherInfoRequestData) => {
   try {
-    const res = await client.post("/saju-profiles", {
+    const res = await client.post("/saju/profile", {
       ...data,
       is_self: "N",
     });
@@ -59,28 +59,28 @@ export const saveOtherInfoRequest = async (data: SaveOtherInfoRequestData) => {
 
     return parsed.data;
   } catch (err) {
-    if (isAxiosError(err)) throw new ApiError(err.response?.data.errorCode);
+    if (isAxiosError(err)) throw new ApiError(err.response?.data.message);
     throw err;
   }
 };
 
 export type MyProfileResponse = {
-  myProfile?: {
+  saju_profile?: {
     name: string;
     gender: "F" | "M";
     birth_date: string;
     calendar_type: "solar" | "lunar" | "lunar_leap";
-    birth_time: string;
+    birth_time: string | null;
   };
 };
 
 export const getMyProfileRequest = async (): Promise<MyProfileResponse> => {
   try {
-    const res = await client.get("/my-profile");
-
+    const res = await client.get("/saju/my-profile");
+    
     return res.data;
   } catch (err) {
-    if (isAxiosError(err)) throw new ApiError(err.response?.data.errorCode);
+    if (isAxiosError(err)) throw new ApiError(err.response?.data.message);
     throw err;
   }
 };

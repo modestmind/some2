@@ -3,6 +3,8 @@ import classnames from "classnames/bind";
 import styles from "./login-screen.module.css";
 import SnsLoginButtonComponent from "../components/sns-login-button-component";
 import useLogin from "../hooks/use-login";
+import { toastActions } from "../store/toast-slice";
+import { useDispatch } from "react-redux";
 
 type LoginLocationState = {
   from?: string;
@@ -13,6 +15,7 @@ const cx = classnames.bind(styles);
 const LoginScreen = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch();
   const { mutate: loginMutate } = useLogin();
 
   const from = (location.state as LoginLocationState)?.from ?? "/";
@@ -29,7 +32,7 @@ const LoginScreen = () => {
           navigate(from, { replace: true });
         },
         onError: () => {
-          alert("로그인에 실패했습니다. 다시 시도해 주세요!");
+          dispatch(toastActions.show({ message: "로그인에 실패했습니다. 다시 시도해 주세요!", code: 201 }));
         },
       }
     );
@@ -47,7 +50,7 @@ const LoginScreen = () => {
           navigate(from, { replace: true });
         },
         onError: () => {
-          alert("로그인에 실패했습니다. 다시 시도해 주세요!");
+          dispatch(toastActions.show({ message: "로그인에 실패했습니다. 다시 시도해 주세요!", code: 201 }));
         },
       }
     );

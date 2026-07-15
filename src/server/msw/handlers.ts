@@ -8,7 +8,7 @@ const lsDatabase: Database = loadDatabase();
 
 const handlers = [
 
-  http.post("/api/login", async ({ request }) => {
+  http.post("/api/auth/login", async ({ request }) => {
     const body = await request.json();
     await delay(500);
 
@@ -54,7 +54,7 @@ const handlers = [
     return HttpResponse.json({ token, nickname: loginUser.nickname });
   }),
 
-  http.post("/api/logout", async ({ request }) => {
+  http.post("/api/auth/logout", async ({ request }) => {
     await delay(500);
 
     const authHeader = request.headers.get("Authorization");
@@ -68,7 +68,7 @@ const handlers = [
     return HttpResponse.json({});
   }),
 
-  http.post("/api/saju-profiles", async ({ request }) => {
+  http.post("/api/saju/saju-profiles", async ({ request }) => {
     await delay(500);
 
     const authHeader = request.headers.get("Authorization");
@@ -120,7 +120,7 @@ const handlers = [
     return HttpResponse.json({ saju_profile: newProfile }, { status: 201 });
   }),
 
-  http.get("/api/my-profile", async ({ request }) => {
+  http.get("/api/saju/my-profile", async ({ request }) => {
     await delay(500);
 
     const auth = request.headers.get("Authorization");
@@ -133,11 +133,11 @@ const handlers = [
       return HttpResponse.json({ errorCode: "INVALID_TOKEN"}, { status: 401 });
     }
 
-    const myProfile = lsDatabase.saju_profiles.find(
+    const saju_profiles = lsDatabase.saju_profiles?.find(
       (pf) => pf.user_id === foundSession.user_id && pf.is_self === "Y"
     );
 
-    return HttpResponse.json( { myProfile }, { status: 201 });
+    return HttpResponse.json( { saju_profiles }, { status: 201 });
   }),
 
 ];

@@ -8,7 +8,7 @@ export const loginRequest = async (data: {
   nickname: string;
 }) => {
   try {
-    const res = await client.post("/login", data);
+    const res = await client.post("/auth/login", data);
 
     const resDataSchema = z.object({
       token: z.string(),
@@ -23,7 +23,7 @@ export const loginRequest = async (data: {
     return parsed.data;
   } catch (err) {
     if (isAxiosError(err)) {
-      throw new ApiError(err.response?.data.errorCode);
+      throw new ApiError(err.response?.data.message);
     }
 
     throw err;

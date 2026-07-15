@@ -15,7 +15,7 @@ const ToastComponent = () => {
 
     const timer = setTimeout(() => {
       dispatch(toastActions.hide());
-    }, 3000);
+    }, 5000);
 
     return () => {
       // 클린업
@@ -40,6 +40,7 @@ const ToastComponent = () => {
             color: "#fff",
             fontSize: 16,
             textAlign: "center",
+            whiteSpace: "pre-line",
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
           }}
         >
