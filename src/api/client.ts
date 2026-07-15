@@ -5,7 +5,8 @@ import { removeLocalStorage } from "../utils/local-storage";
 
 const client = axios.create({
   //baseURL: "/api",  // 내부 목서버
-  baseURL: "http://localhost:3000/api",  // 로컬 서버
+  //baseURL: "http://localhost:3000/api",  // 로컬 서버
+  baseURL: "https://some2-backend.onrender.com/api",  // render 서버
 });
 
 client.interceptors.request.use((config) => {
