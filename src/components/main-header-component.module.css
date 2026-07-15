@@ -43,6 +43,7 @@
   filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.3));
   position: relative;
   z-index: 1;
+  cursor: pointer;
 }
 
 .headerActions {

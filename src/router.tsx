@@ -4,6 +4,7 @@ import LoginScreen from "./screens/login-screen";
 import MyProfileScreen from "./screens/my-profile-screen";
 import OtherProfileScreen from "./screens/other-profile-screen";
 import PaymentScreen from "./screens/payment-screen";
+import ReportScreen from "./screens/report-screen";
 import ToastComponent from "./components/toast-component";
 
 const RootLayout = () => (
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
       { path: "/my-profile", element: <MyProfileScreen /> },
       { path: "/other-profile", element: <OtherProfileScreen /> },
       { path: "/payment", element: <PaymentScreen /> },
+      { path: "/report", element: <ReportScreen /> },
     ],
   },
 ]);

@@ -1,8 +1,7 @@
 import { Navigate, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import classnames from "classnames/bind";
 import styles from "./payment-screen.module.css";
-import { toastActions } from "../store/toast-slice";
 import type { StateType } from "../store/store";
 
 const cx = classnames.bind(styles);
@@ -14,23 +13,12 @@ const trustItems = [
 
 const PaymentScreen = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const token = useSelector((state: StateType) => state.auth.token);
 
   if (token === null) {
     return <Navigate to="/login" state={{ from: location.pathname }} replace />;
   }
-
-  const handleActivate = () => {
-    dispatch(
-      toastActions.show({
-        message: "결제 모듈 준비중 입니다.",
-        code: 200,
-      })
-    );
-    // TODO: 실제 결제 모듈 연동
-  };
 
   return (
     <div className={cx("paymentApp")}>
@@ -91,7 +79,7 @@ const PaymentScreen = () => {
           <button
             type="button"
             className={cx("btnCta", "bounce")}
-            onClick={handleActivate}
+            onClick={() => navigate("/report")}
           >
             [ 클릭 한번으로 리포트 열람 권한 활성화 ➔ ]
           </button>
