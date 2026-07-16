@@ -1,8 +1,10 @@
-import { Navigate, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Navigate, useNavigate, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import classnames from "classnames/bind";
 import styles from "./payment-screen.module.css";
 import type { StateType } from "../store/store";
+import { toastActions } from "../store/toast-slice";
+import useCreateReport from "../hooks/use-create-report";
 
 const cx = classnames.bind(styles);
 
@@ -13,12 +15,32 @@ const trustItems = [
 
 const PaymentScreen = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const dispatch = useDispatch();
 
   const token = useSelector((state: StateType) => state.auth.token);
+  const sajuProfileId = (location.state as { saju_profile_id?: number } | null)?.saju_profile_id;
+
+  const { isPending, mutate: createReportMutate } = useCreateReport();
 
   if (token === null) {
     return <Navigate to="/login" state={{ from: location.pathname }} replace />;
   }
+
+  const handleCreateReport = () => {
+    if (sajuProfileId === undefined) {
+      dispatch(toastActions.show({ message: "프로필 정보를 찾을 수 없습니다.", code: 400 }));
+      return;
+    }
+    createReportMutate(sajuProfileId, {
+      onSuccess: () => {
+        navigate("/report", { state: { saju_profile_id: sajuProfileId } });
+      },
+      onError: () => {
+        dispatch(toastActions.show({ message: "리포트 생성 중 오류가 발생했습니다. 다시 시도해 주세요.", code: 500 }));
+      },
+    });
+  };
 
   return (
     <div className={cx("paymentApp")}>
@@ -78,10 +100,11 @@ const PaymentScreen = () => {
         <div className={cx("ctaArea")}>
           <button
             type="button"
-            className={cx("btnCta", "bounce")}
-            onClick={() => navigate("/report")}
+            className={cx("btnCta", { bounce: !isPending })}
+            disabled={isPending}
+            onClick={handleCreateReport}
           >
-            [ 클릭 한번으로 리포트 열람 권한 활성화 ➔ ]
+            {isPending ? "리포트 생성 중..." : "[ 클릭 한번으로 리포트 열람 권한 활성화 ➔ ]"}
           </button>
           <p className={cx("subBadge")}>
             (카카오페이 / 토스페이 / 네이버페이로 3초 만에 간편 인증 및 열람)

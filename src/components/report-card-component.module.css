@@ -1,0 +1,97 @@
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cardName {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.genderBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.genderF {
+  background: #fff0f3;
+  color: #e84393;
+}
+
+.genderM {
+  background: #f0f4ff;
+  color: #4870e0;
+}
+
+.cardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.metaLabel {
+  font-size: 0.8rem;
+  color: #aaa;
+  font-weight: 600;
+  min-width: 70px;
+}
+
+.metaValue {
+  font-size: 0.88rem;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #f0f0f0;
+  margin: 0;
+}
+
+.btnReport {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Pretendard', sans-serif;
+  transition: all 0.2s;
+}
+
+.btnReportActive {
+  background-color: var(--primary);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(242, 136, 155, 0.35);
+}
+
+.btnReportActive:active {
+  transform: scale(0.98);
+}
+
+.btnReportDisabled {
+  background-color: #f0f0f0;
+  color: #bbb;
+  cursor: not-allowed;
+}

@@ -130,9 +130,9 @@ const OtherProfileScreen = () => {
         relationship_status: worry,
       },
       {
-        onSuccess: () => {
+        onSuccess: (data) => {
           dispatch(toastActions.show({ message: "데이터 분석을 시작합니다...", code: 200 }));
-          navigate("/payment");
+          navigate("/payment", { state: { saju_profile_id: data.saju_profile.saju_profile_id } });
         },
         onError: () => {
           dispatch(toastActions.show({ message: "저장 중 오류가 발생했습니다. 다시 시도해 주세요.", code: 500 }));

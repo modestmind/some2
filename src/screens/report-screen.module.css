@@ -4,8 +4,6 @@
   background-color: #f5f5f5;
   font-family: 'Pretendard', sans-serif;
   color: #333333;
-  line-height: 1.8;
-  letter-spacing: -0.02em;
 }
 
 .cover {
@@ -26,6 +24,8 @@
   min-height: 100vh;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
   overflow-x: hidden;
+  line-height: 1.8;
+  letter-spacing: -0.02em;
 }
 
 .footer {

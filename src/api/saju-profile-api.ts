@@ -77,8 +77,42 @@ export type MyProfileResponse = {
 export const getMyProfileRequest = async (): Promise<MyProfileResponse> => {
   try {
     const res = await client.get("/saju/my-profile");
-    
+
     return res.data;
+  } catch (err) {
+    if (isAxiosError(err)) throw new ApiError(err.response?.data.message);
+    throw err;
+  }
+};
+
+export type ProfileListItem = {
+  saju_profile_id: number;
+  name: string;
+  gender: "F" | "M";
+  relationship_type: string;
+  relation_duration: string;
+  relationship_status: string;
+  created_at: string;
+  report_yn: "Y" | "N";
+};
+
+export type ProfileListResponse = {
+  saju_profiles: ProfileListItem[];
+};
+
+export const getProfileListRequest = async (): Promise<ProfileListResponse> => {
+  try {
+    const res = await client.get("/saju/profile_list");
+    return res.data;
+  } catch (err) {
+    if (isAxiosError(err)) throw new ApiError(err.response?.data.message);
+    throw err;
+  }
+};
+
+export const createReportRequest = async (saju_profile_id: number): Promise<void> => {
+  try {
+    await client.post("/saju/report", { saju_profile_id });
   } catch (err) {
     if (isAxiosError(err)) throw new ApiError(err.response?.data.message);
     throw err;

@@ -42,6 +42,7 @@ const SideMenuComponent = (props: SideMenuComponentProps) => {
         onClick={onClose}
       />
       <div className={cn(styles.sideMenu, { [styles.sideMenuActive]: isOpen })}>
+        <button type="button" className={styles.closeBtn} onClick={onClose}>✕</button>
         {token ? (
           <>
             <div className={styles.sideMenuHeader}>
@@ -61,12 +62,12 @@ const SideMenuComponent = (props: SideMenuComponentProps) => {
             </div>
             <ul className={styles.sideMenuList}>
               <li>
-                <button type="button" className={styles.logoutBtn} onClick={() => navigate("/my-profile")} >
+                <button type="button" className={styles.logoutBtn} onClick={() => { navigate("/my-profile"); onClose(); }} >
                   썸 손절 리포트 받기
                 </button>
               </li>
               <li>
-                <button type="button" className={styles.logoutBtn} onClick={handleWorking} >
+                <button type="button" className={styles.logoutBtn} onClick={() => { navigate("/report-list"); onClose(); }} >
                   마이 리포트
                 </button>
               </li>
