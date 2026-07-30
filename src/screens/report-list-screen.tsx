@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import type { StateType } from "../store/store";
+import type { StateType } from "../shared/store/store";
 import MainHeaderComponent from "../components/main-header-component";
 import SideMenuComponent from "../components/side-menu-component";
 import ReportCardComponent from "../components/report-card-component";

@@ -1,4 +1,4 @@
-import { database, type Database } from "../server/msw/database";
+import { database, type Database } from "../../server/msw/database";
 
 const DATABASE = "database";
 

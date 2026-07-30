@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import styles from "./main-header-component.module.css";
-import type { StateType } from "../store/store";
+import type { StateType } from "../shared/store/store";
 import { useNavigate } from "react-router-dom";
 
 type MainHeaderComponentProps = {

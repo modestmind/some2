@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import classnames from "classnames/bind";
 import styles from "./report-screen.module.css";
 import ReportSectionComponent from "../components/report-section-component";
-import type { StateType } from "../store/store";
+import type { StateType } from "../shared/store/store";
 import { useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 import MainHeaderComponent from "../components/main-header-component";

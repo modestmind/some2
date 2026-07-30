@@ -2,8 +2,8 @@ import { Navigate, useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import classnames from "classnames/bind";
 import styles from "./payment-screen.module.css";
-import type { StateType } from "../store/store";
-import { toastActions } from "../store/toast-slice";
+import type { StateType } from "../shared/store/store";
+import { toastActions } from "../shared/store/toast-slice";
 import useCreateReport from "../hooks/use-create-report";
 
 const cx = classnames.bind(styles);

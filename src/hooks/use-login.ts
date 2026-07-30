@@ -1,36 +1,21 @@
 import { useDispatch } from "react-redux";
-import { tokenActions } from "../store/auth-slice";
+import { tokenActions } from "../shared/store/auth-slice";
 import { useMutation } from "@tanstack/react-query";
-import { setLocalStorage } from "../utils/local-storage";
 import { loginRequest } from "../api/login-api";
-import { parseTokenExpiry, scheduleSilentRefresh } from "../utils/token-util";
 
 const useLogin = () => {
   const dispatch = useDispatch();
 
   const { isPending, mutate } = useMutation({
     mutationFn: async (data: {
-          sns_provider_code: string;
-          sns_user_key: string;
-          nickname: string;
-        }) => {
-      const res = await loginRequest(data);
-      return res;
+      sns_provider_code: string;
+      credential: string;
+    }) => {
+      return await loginRequest(data);
     },
-    onSuccess: (res, variables) => {
-      const { token, nickname } = res;
-      const { sns_provider_code, sns_user_key } = variables;
-
-      dispatch(tokenActions.set({ token, nickname }));
-      setLocalStorage("token", token);
-      setLocalStorage("nickname", nickname);
-
-      const expiresAt = parseTokenExpiry(token);
-      setLocalStorage("token_expires_at", expiresAt);
-      setLocalStorage("sns_provider_code", sns_provider_code);
-      setLocalStorage("sns_user_key", sns_user_key);
-
-      scheduleSilentRefresh(expiresAt);
+    onSuccess: (res) => {
+      // 액세스 토큰은 메모리(Redux)에만 저장, 리프레시 토큰은 httpOnly 쿠키로 자동 관리
+      dispatch(tokenActions.set({ token: res.token, nickname: res.nickname }));
     },
   });
 

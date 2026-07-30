@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import type { StateType } from "../store/store";
+import type { StateType } from "../shared/store/store";
 import { useEffect } from "react";
-import { toastActions } from "../store/toast-slice";
+import { toastActions } from "../shared/store/toast-slice";
 
 const ToastComponent = () => {
   const dispatch = useDispatch();

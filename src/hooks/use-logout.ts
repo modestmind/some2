@@ -1,9 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
-import { tokenActions } from "../store/auth-slice";
+import { tokenActions } from "../shared/store/auth-slice";
 import { logoutRequest } from "../api/logout-api";
-import { removeLocalStorage } from "../utils/local-storage";
-import { cancelSilentRefresh } from "../utils/token-util";
 
 const useLogout = () => {
   const dispatch = useDispatch();
@@ -13,13 +11,8 @@ const useLogout = () => {
       return await logoutRequest();
     },
     onSettled: () => {
-      cancelSilentRefresh();
+      // API 성공/실패 무관하게 클라이언트 인증 상태 초기화
       dispatch(tokenActions.clear());
-      removeLocalStorage("token");
-      removeLocalStorage("nickname");
-      removeLocalStorage("token_expires_at");
-      removeLocalStorage("sns_provider_code");
-      removeLocalStorage("sns_user_key");
     },
   });
 

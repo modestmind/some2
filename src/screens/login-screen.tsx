@@ -3,8 +3,9 @@ import classnames from "classnames/bind";
 import styles from "./login-screen.module.css";
 import SnsLoginButtonComponent from "../components/sns-login-button-component";
 import useLogin from "../hooks/use-login";
-import { toastActions } from "../store/toast-slice";
+import { toastActions } from "../shared/store/toast-slice";
 import { useDispatch } from "react-redux";
+import { GOOGLE_CLIENT_ID, KAKAO_JS_APP_KEY, KAKAO_REDIRECT_URI } from "../shared/config";
 
 type LoginLocationState = {
   from?: string;
@@ -21,39 +22,28 @@ const LoginScreen = () => {
   const from = (location.state as LoginLocationState)?.from ?? "/";
 
   const handleKakaoLogin = () => {
-    loginMutate(
-      {
-        sns_provider_code: "kakao",
-        sns_user_key: "kakao_user_key_1234",
-        nickname: "카카오유저",
-      },
-      {
-        onSuccess: () => {
-          navigate(from, { replace: true });
-        },
-        onError: () => {
-          dispatch(toastActions.show({ message: "로그인에 실패했습니다. 다시 시도해 주세요!", code: 201 }));
-        },
-      }
-    );
+    if (!window.Kakao.isInitialized()) {
+      window.Kakao.init(KAKAO_JS_APP_KEY);
+    }
+    window.Kakao.Auth.authorize({ redirectUri: KAKAO_REDIRECT_URI });
   };
 
   const handleGoogleLogin = () => {
-    loginMutate(
-      {
-        sns_provider_code: "google",
-        sns_user_key: "google_user_key_1234",
-        nickname: "구글유저",
+    window.google.accounts.id.initialize({
+      client_id: GOOGLE_CLIENT_ID,
+      callback: (response) => {
+        loginMutate(
+          { sns_provider_code: "google", credential: response.credential },
+          {
+            onSuccess: () => navigate(from, { replace: true }),
+            onError: () => {
+              dispatch(toastActions.show({ message: "로그인에 실패했습니다. 다시 시도해 주세요!", code: 201 }));
+            },
+          }
+        );
       },
-      {
-        onSuccess: () => {
-          navigate(from, { replace: true });
-        },
-        onError: () => {
-          dispatch(toastActions.show({ message: "로그인에 실패했습니다. 다시 시도해 주세요!", code: 201 }));
-        },
-      }
-    );
+    });
+    window.google.accounts.id.prompt();
   };
 
   return (

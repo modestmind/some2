@@ -4,8 +4,7 @@ import client, { ApiError } from "./client";
 
 export const loginRequest = async (data: {
   sns_provider_code: string;
-  sns_user_key: string;
-  nickname: string;
+  credential: string;
 }) => {
   try {
     const res = await client.post("/auth/login", data);

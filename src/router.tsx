@@ -6,6 +6,7 @@ import OtherProfileScreen from "./screens/other-profile-screen";
 import PaymentScreen from "./screens/payment-screen";
 import ReportScreen from "./screens/report-screen";
 import ReportListScreen from "./screens/report-list-screen";
+import KakaoCallbackScreen from "./screens/kakao-callback-screen";
 import ToastComponent from "./components/toast-component";
 
 const RootLayout = () => (
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
       { path: "/payment", element: <PaymentScreen /> },
       { path: "/report", element: <ReportScreen /> },
       { path: "/report-list", element: <ReportListScreen /> },
+      { path: "/auth/kakao/callback", element: <KakaoCallbackScreen /> },
     ],
   },
 ]);

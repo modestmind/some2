@@ -4,8 +4,10 @@ import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import router from "./router.tsx";
 import { Provider } from "react-redux";
-import store from "./store/store.ts";
+import store from "./shared/store/store.ts";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { tokenActions } from "./shared/store/auth-slice.ts";
+import { initRefreshRequest } from "./api/auth-api.ts";
 
 const queryClient = new QueryClient();
 
@@ -22,8 +24,14 @@ const render = () => {
 };
 
 const run = async () => {
-  // const worker = setupWorker(...handlers);
-  // await worker.start();
+  // 새로고침 시 httpOnly 쿠키로 액세스 토큰 복구 시도
+  try {
+    const { token, nickname } = await initRefreshRequest();
+    store.dispatch(tokenActions.set({ token, nickname }));
+  } catch {
+    // 쿠키 없음 또는 만료 → 비로그인 상태로 렌더
+  }
+
   render();
 };
 

@@ -1,11 +1,11 @@
 import cn from "classnames";
 import styles from "./side-menu-component.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import type { StateType } from "../store/store";
+import type { StateType } from "../shared/store/store";
 import ButtonComponent from "./button-component";
 import { useNavigate } from "react-router-dom";
 import useLogout from "../hooks/use-logout";
-import { toastActions } from "../store/toast-slice";
+import { toastActions } from "../shared/store/toast-slice";
 
 type SideMenuComponentProps = {
   isOpen: boolean;

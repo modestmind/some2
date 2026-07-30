@@ -5,10 +5,10 @@ import z from "zod";
 import classnames from "classnames/bind";
 import styles from "./my-profile-screen.module.css";
 import CustomCheckboxComponent from "../components/custom-checkbox-component";
-import { toastActions } from "../store/toast-slice";
-import { parseZodError } from "../utils/zod-error";
+import { toastActions } from "../shared/store/toast-slice";
+import { parseZodError } from "../shared/utils/zod-error";
 import useSaveMyProfile from "../hooks/use-save-my-profile";
-import type { StateType } from "../store/store";
+import type { StateType } from "../shared/store/store";
 import useGetMyProfile from "../hooks/use-get-my-profile";
 
 const cx = classnames.bind(styles);

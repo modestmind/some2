@@ -1,8 +1,8 @@
 import { http, delay, HttpResponse } from "msw";
-import { loadDatabase, saveDatabase } from "../../utils/local-storage";
+import { loadDatabase, saveDatabase } from "../../shared/utils/local-storage";
 import { type Database, type User, type SajuProfile } from "./database";
-import { getNextProfileId, getNextUserId } from "../../utils/id-util";
-import { getDateTime } from "../../utils/date-util";
+import { getNextProfileId, getNextUserId } from "../../shared/utils/id-util";
+import { getDateTime } from "../../shared/utils/date-util";
 
 const lsDatabase: Database = loadDatabase();
 

@@ -6,10 +6,10 @@ import classnames from "classnames/bind";
 import styles from "./other-profile-screen.module.css";
 import CustomCheckboxComponent from "../components/custom-checkbox-component";
 import ToastComponent from "../components/toast-component";
-import { toastActions } from "../store/toast-slice";
-import { parseZodError } from "../utils/zod-error";
+import { toastActions } from "../shared/store/toast-slice";
+import { parseZodError } from "../shared/utils/zod-error";
 import useSaveOtherProfile from "../hooks/use-save-other-profile";
-import type { StateType } from "../store/store";
+import type { StateType } from "../shared/store/store";
 
 const cx = classnames.bind(styles);
 

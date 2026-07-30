@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import type { StateType } from "../store/store";
+import type { StateType } from "../shared/store/store";
 
 const RootScreen = () => {
   const token = useSelector((state: StateType) => state.auth.token);

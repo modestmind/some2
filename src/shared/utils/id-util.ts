@@ -1,4 +1,4 @@
-import type { SajuProfile, User } from "../server/msw/database";
+import type { SajuProfile, User } from "../../server/msw/database";
 
 export function getNextUserId(users: User[]): string {
   const startId = 10101010;
