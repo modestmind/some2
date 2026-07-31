@@ -5,7 +5,7 @@ import type { StateType } from "../shared/store/store";
 import MainHeaderComponent from "../components/main-header-component";
 import SideMenuComponent from "../components/side-menu-component";
 import ReportCardComponent from "../components/report-card-component";
-import useGetProfileList from "../hooks/use-get-profile-list";
+import { useGetMyReports } from "../hooks/use-get-my-reports";
 import styles from "./report-list-screen.module.css";
 
 const ReportListScreen = () => {
@@ -13,7 +13,7 @@ const ReportListScreen = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const token = useSelector((state: StateType) => state.auth.token);
 
-  const { data, isLoading } = useGetProfileList();
+  const { data, isLoading } = useGetMyReports();
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
@@ -26,10 +26,10 @@ const ReportListScreen = () => {
     return <Navigate to="/login" state={{ from: location.pathname }} replace />;
   }
 
-  const profiles = data?.saju_profiles ?? [];
+  const reports = data?.reports ?? [];
 
-  const handleViewReport = (sajuProfileId: number) => {
-    navigate("/report", { state: { saju_profile_id: sajuProfileId } });
+  const handleViewReport = (reportId: string) => {
+    navigate(`/report?reportId=${reportId}`);
   };
 
   return (
@@ -55,7 +55,7 @@ const ReportListScreen = () => {
         <div className={styles.loadingWrap}>
           <div className={styles.spinner} />
         </div>
-      ) : profiles.length === 0 ? (
+      ) : reports.length === 0 ? (
         <div className={styles.emptyWrap}>
           <div className={styles.emptyIcon}>📋</div>
           <p className={styles.emptyTitle}>아직 리포트가 없어요</p>
@@ -65,9 +65,9 @@ const ReportListScreen = () => {
         </div>
       ) : (
         <div className={styles.content}>
-          {profiles.map((item) => (
+          {reports.map((item) => (
             <ReportCardComponent
-              key={item.saju_profile_id}
+              key={item.report_id}
               item={item}
               onViewReport={handleViewReport}
             />

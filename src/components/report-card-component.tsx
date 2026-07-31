@@ -1,4 +1,4 @@
-import type { ProfileListItem } from "../api/saju-profile-api";
+import type { ReportListItem } from "../api/report-api";
 import styles from "./report-card-component.module.css";
 
 const GENDER_LABEL: Record<string, string> = {
@@ -16,26 +16,26 @@ const formatDate = (dateStr: string) => {
 };
 
 type ReportCardComponentProps = {
-  item: ProfileListItem;
-  onViewReport: (id: number) => void;
+  item: ReportListItem;
+  onViewReport: (reportId: string) => void;
 };
 
 const ReportCardComponent = ({ item, onViewReport }: ReportCardComponentProps) => {
-  const hasReport = item.report_yn === "Y";
+  const hasReport = item.report_status === "B";
 
   return (
     <div className={styles.card}>
       <div className={styles.cardTop}>
-        <span className={styles.cardName}>{item.name}</span>
-        <span className={`${styles.genderBadge} ${item.gender === "F" ? styles.genderF : styles.genderM}`}>
-          {GENDER_LABEL[item.gender] ?? item.gender}
+        <span className={styles.cardName}>{item.partner_name}</span>
+        <span className={`${styles.genderBadge} ${item.partner_gender === "F" ? styles.genderF : styles.genderM}`}>
+          {GENDER_LABEL[item.partner_gender] ?? item.partner_gender}
         </span>
       </div>
 
       <div className={styles.cardMeta}>
         <div className={styles.metaRow}>
           <span className={styles.metaLabel}>본인과의 관계</span>
-          <span className={styles.metaValue}>{item.relationship_type || "-"}</span>
+          <span className={styles.metaValue}>{item.partner_relationship_type || "-"}</span>
         </div>
         <div className={styles.metaRow}>
           <span className={styles.metaLabel}>생성일</span>
@@ -49,7 +49,7 @@ const ReportCardComponent = ({ item, onViewReport }: ReportCardComponentProps) =
         type="button"
         className={`${styles.btnReport} ${hasReport ? styles.btnReportActive : styles.btnReportDisabled}`}
         disabled={!hasReport}
-        onClick={() => hasReport && onViewReport(item.saju_profile_id)}
+        onClick={() => hasReport && onViewReport(item.report_id)}
       >
         {hasReport ? "리포트 보기" : "리포트 준비중"}
       </button>

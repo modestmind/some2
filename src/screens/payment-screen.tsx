@@ -4,9 +4,14 @@ import classnames from "classnames/bind";
 import styles from "./payment-screen.module.css";
 import type { StateType } from "../shared/store/store";
 import { toastActions } from "../shared/store/toast-slice";
-import useCreateReport from "../hooks/use-create-report";
+import useCreateOrder from "../hooks/use-create-order";
+import { decodeJwtPayload } from "../shared/utils/jwt-decode";
+import { loadTossPayments } from "@tosspayments/tosspayments-sdk";
 
 const cx = classnames.bind(styles);
+
+const TOSS_CLIENT_KEY = import.meta.env.VITE_TOSS_CLIENT_KEY as string;
+const PAYMENT_AMOUNT = 3300;
 
 const trustItems = [
   "결제 즉시 카카오 알림톡으로 리포트 링크가 동시 발송되어 평생 소장할 수 있습니다.",
@@ -21,25 +26,43 @@ const PaymentScreen = () => {
   const token = useSelector((state: StateType) => state.auth.token);
   const sajuProfileId = (location.state as { saju_profile_id?: number } | null)?.saju_profile_id;
 
-  const { isPending, mutate: createReportMutate } = useCreateReport();
+  const userId = token ? (decodeJwtPayload(token).userId as string) : null;
+
+  const { isPending, mutate: createOrderMutate } = useCreateOrder();
 
   if (token === null) {
     return <Navigate to="/login" state={{ from: location.pathname }} replace />;
   }
 
   const handleCreateReport = () => {
-    if (sajuProfileId === undefined) {
+    if (sajuProfileId === undefined || userId === null) {
       dispatch(toastActions.show({ message: "프로필 정보를 찾을 수 없습니다.", code: 400 }));
       return;
     }
-    createReportMutate(sajuProfileId, {
-      onSuccess: () => {
-        navigate("/report", { state: { saju_profile_id: sajuProfileId } });
+    createOrderMutate(
+      { saju_profile_id: sajuProfileId, payment_amount: PAYMENT_AMOUNT },
+      {
+        onSuccess: async ({ order_id }) => {
+          try {
+            const tossPayments = await loadTossPayments(TOSS_CLIENT_KEY);
+            const payment = tossPayments.payment({ customerKey: userId });
+            await payment.requestPayment({
+              method: "CARD",
+              amount: { currency: "KRW", value: PAYMENT_AMOUNT },
+              orderId: order_id,
+              orderName: "썸 손절 판별 리포트",
+              successUrl: `${window.location.origin}/payment/success`,
+              failUrl: `${window.location.origin}/payment/fail`,
+            });
+          } catch {
+            dispatch(toastActions.show({ message: "결제 창을 열 수 없습니다. 다시 시도해 주세요.", code: 500 }));
+          }
+        },
+        onError: () => {
+          dispatch(toastActions.show({ message: "주문 생성 중 오류가 발생했습니다. 다시 시도해 주세요.", code: 500 }));
+        },
       },
-      onError: () => {
-        dispatch(toastActions.show({ message: "리포트 생성 중 오류가 발생했습니다. 다시 시도해 주세요.", code: 500 }));
-      },
-    });
+    );
   };
 
   return (
@@ -104,7 +127,7 @@ const PaymentScreen = () => {
             disabled={isPending}
             onClick={handleCreateReport}
           >
-            {isPending ? "리포트 생성 중..." : "[ 클릭 한번으로 리포트 열람 권한 활성화 ➔ ]"}
+            {isPending ? "주문 처리 중..." : "[ 클릭 한번으로 리포트 열람 권한 활성화 ➔ ]"}
           </button>
           <p className={cx("subBadge")}>
             (카카오페이 / 토스페이 / 네이버페이로 3초 만에 간편 인증 및 열람)

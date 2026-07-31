@@ -4,6 +4,9 @@ import LoginScreen from "./screens/login-screen";
 import MyProfileScreen from "./screens/my-profile-screen";
 import OtherProfileScreen from "./screens/other-profile-screen";
 import PaymentScreen from "./screens/payment-screen";
+import PaymentSuccessScreen from "./screens/payment-success-screen";
+import PaymentFailScreen from "./screens/payment-fail-screen";
+import ReportCreatingScreen from "./screens/report-creating-screen";
 import ReportScreen from "./screens/report-screen";
 import ReportListScreen from "./screens/report-list-screen";
 import KakaoCallbackScreen from "./screens/kakao-callback-screen";
@@ -27,6 +30,9 @@ const router = createBrowserRouter([
       { path: "/my-profile", element: <MyProfileScreen /> },
       { path: "/other-profile", element: <OtherProfileScreen /> },
       { path: "/payment", element: <PaymentScreen /> },
+      { path: "/payment/success", element: <PaymentSuccessScreen /> },
+      { path: "/payment/fail", element: <PaymentFailScreen /> },
+      { path: "/report-creating", element: <ReportCreatingScreen /> },
       { path: "/report", element: <ReportScreen /> },
       { path: "/report-list", element: <ReportListScreen /> },
       { path: "/auth/kakao/callback", element: <KakaoCallbackScreen /> },
