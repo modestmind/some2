@@ -33,6 +33,7 @@ const ReportCreatingScreen = () => {
   return (
     <div className={cx("pageWrapper")}>
       <div className={cx("container")}>
+        <div style={{position: "absolute", top: "30px", fontSize: "20px", color: "blue"}}>결제가 정상적으로 처리되었습니다.</div>
         <div className={cx("spinner")} />
         <p className={cx("message")}>
           <h3>리포트 작성중입니다.</h3><br />
