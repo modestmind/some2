@@ -68,7 +68,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 999;
+  z-index: 99;
   line-height: 1;
   user-select: none;
 }
@@ -89,7 +89,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 999;
+  z-index: 99;
   user-select: none;
 }
 
