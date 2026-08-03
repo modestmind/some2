@@ -44,8 +44,6 @@ const PaymentScreen = () => {
       {
         onSuccess: async ({ order_id }) => {
           try {
-console.log("====");
-console.log(TOSS_CLIENT_KEY.slice(0, 8));
             const tossPayments = await loadTossPayments(TOSS_CLIENT_KEY);
             const payment = tossPayments.payment({ customerKey: userId });
             await payment.requestPayment({
@@ -57,7 +55,6 @@ console.log(TOSS_CLIENT_KEY.slice(0, 8));
               failUrl: `${window.location.origin}/payment/fail`,
             });
           } catch(err) {
-console.log(err);
             dispatch(toastActions.show({ message: "결제 창을 열 수 없습니다. 다시 시도해 주세요.", code: 500 }));
           }
         },
