@@ -1,11 +1,10 @@
 import cn from "classnames";
 import styles from "./side-menu-component.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import type { StateType } from "../shared/store/store";
 import ButtonComponent from "./button-component";
 import { useNavigate } from "react-router-dom";
 import useLogout from "../hooks/use-logout";
-import { toastActions } from "../shared/store/toast-slice";
 
 type SideMenuComponentProps = {
   isOpen: boolean;
@@ -14,7 +13,6 @@ type SideMenuComponentProps = {
 
 const SideMenuComponent = (props: SideMenuComponentProps) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const token = useSelector((state: StateType) => state.auth.token);
   const nickname = useSelector((state: StateType) => state.auth.nickname);
   const { isOpen, onClose } = props;
