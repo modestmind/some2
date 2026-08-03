@@ -21,11 +21,6 @@ const SideMenuComponent = (props: SideMenuComponentProps) => {
 
   const { mutate: logoutMutate } = useLogout();
 
-
-  const handleWorking = () => {
-    dispatch(toastActions.show({message: "준비중 입니다.", code: 200}));
-  }
-
   const handleLogout = () => {
     logoutMutate(undefined, {
       onSettled: () => {
@@ -62,6 +57,11 @@ const SideMenuComponent = (props: SideMenuComponentProps) => {
             </div>
             <ul className={styles.sideMenuList}>
               <li>
+                <button type="button" className={styles.logoutBtn} onClick={() => { navigate("/"); onClose(); }} >
+                  메인페이지
+                </button>
+              </li>              
+              <li>
                 <button type="button" className={styles.logoutBtn} onClick={() => { navigate("/my-profile"); onClose(); }} >
                   썸 손절 리포트 받기
                 </button>
@@ -69,16 +69,6 @@ const SideMenuComponent = (props: SideMenuComponentProps) => {
               <li>
                 <button type="button" className={styles.logoutBtn} onClick={() => { navigate("/report-list"); onClose(); }} >
                   마이 리포트
-                </button>
-              </li>
-              <li>
-                <button type="button" className={styles.logoutBtn} onClick={handleWorking} >
-                  캐시 내역
-                </button>
-              </li>
-              <li>
-                <button type="button" className={styles.logoutBtn} onClick={handleWorking} >
-                  포인트 내역
                 </button>
               </li>
               <li>
