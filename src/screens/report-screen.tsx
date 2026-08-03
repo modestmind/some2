@@ -59,12 +59,12 @@ const ReportScreen = () => {
     }
   }, [isError]);
 
+  const [expandedSections, setExpandedSections] = useState<boolean[]>(Array(8).fill(true));
+  const isAllExpanded = expandedSections.every(Boolean);
+
   if (token === null) {
     return <Navigate to="/login" state={{ from: location.pathname }} replace />;
   }
-
-  const [expandedSections, setExpandedSections] = useState<boolean[]>(Array(8).fill(true));
-  const isAllExpanded = expandedSections.every(Boolean);
 
   const handleToggle = (index: number) => {
     setExpandedSections((prev) => {
