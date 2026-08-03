@@ -33,8 +33,8 @@ const formatDate = (iso: string | null | undefined): string => {
   return `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일`;
 };
 
-const renderText = (text: string | null | undefined) =>
-  text?.split("\n").filter(Boolean).map((line, i) => <p key={i}>{line}</p>);
+const renderHtml = (text: string | null | undefined) =>
+  text ? <div dangerouslySetInnerHTML={{ __html: text }} /> : null;
 
 const ReportScreen = () => {
   const navigate = useNavigate();
@@ -128,7 +128,7 @@ const ReportScreen = () => {
                   <span className={styles.coverInfoValue}>{formatDate(report?.created_at)}</span>
                 </div>
               </div>
-              {renderText(report?.report_section1)}
+              {renderHtml(report?.report_section1)}
             </>
           )}
         </ReportSectionComponent>
@@ -140,7 +140,7 @@ const ReportScreen = () => {
           bannerAlt="나는 어떤 사람인가? (나의 연애운)"
         >
           <h3>나는 어떤 사람인가? (나의 연애운)</h3>
-          {isLoading ? <p>불러오는 중...</p> : renderText(report?.report_section2)}
+          {isLoading ? <p>불러오는 중...</p> : renderHtml(report?.report_section2)}
         </ReportSectionComponent>
 
         {/* ── 3페이지. 상대방 연애운 ── */}
@@ -150,7 +150,7 @@ const ReportScreen = () => {
           bannerAlt="상대방은 어떤 사람인가? (상대방 연애운)"
         >
           <h3>상대방은 어떤 사람인가? (상대방 연애운)</h3>
-          {isLoading ? <p>불러오는 중...</p> : renderText(report?.report_section3)}
+          {isLoading ? <p>불러오는 중...</p> : renderHtml(report?.report_section3)}
         </ReportSectionComponent>
 
         {/* ── 4페이지. 연애 리스크 분석 ── */}
@@ -160,7 +160,7 @@ const ReportScreen = () => {
           bannerAlt="우리에게 생길 수 있는 문제? (연애 리스크 분석)"
         >
           <h3>우리에게 생길 수 있는 문제? (연애 리스크 분석)</h3>
-          {isLoading ? <p>불러오는 중...</p> : renderText(report?.report_section4)}
+          {isLoading ? <p>불러오는 중...</p> : renderHtml(report?.report_section4)}
         </ReportSectionComponent>
 
         {/* ── 5페이지. 가상 연애 소설 ── */}
@@ -170,7 +170,7 @@ const ReportScreen = () => {
           bannerAlt="우리의 미래는 어떨까? (가상 연애 소설)"
         >
           <h3>우리의 미래는 어떨까? (가상 연애 소설)</h3>
-          {isLoading ? <p>불러오는 중...</p> : renderText(report?.report_section5)}
+          {isLoading ? <p>불러오는 중...</p> : renderHtml(report?.report_section5)}
         </ReportSectionComponent>
 
         {/* ── 6페이지. 최종 결론 ── */}
@@ -180,7 +180,7 @@ const ReportScreen = () => {
           bannerAlt="썸 손절 판별 (최종 결론)"
         >
           <h3>썸 손절 판별 (최종 결론)</h3>
-          {isLoading ? <p>불러오는 중...</p> : renderText(report?.report_section6)}
+          {isLoading ? <p>불러오는 중...</p> : renderHtml(report?.report_section6)}
         </ReportSectionComponent>
 
         {/* ── 7페이지. 행동 가이드 ── */}
@@ -190,7 +190,7 @@ const ReportScreen = () => {
           bannerAlt="행동 가이드"
         >
           <h3>행동 가이드</h3>
-          {isLoading ? <p>불러오는 중...</p> : renderText(report?.report_section7)}
+          {isLoading ? <p>불러오는 중...</p> : renderHtml(report?.report_section7)}
         </ReportSectionComponent>
 
         {/* ── 8페이지. 마지막 안내 말씀 ── */}
@@ -200,7 +200,7 @@ const ReportScreen = () => {
           bannerAlt="마지막 안내 말씀"
         >
           <h3>마지막 안내 말씀</h3>
-          {isLoading ? <p>불러오는 중...</p> : renderText(report?.report_section8)}
+          {isLoading ? <p>불러오는 중...</p> : renderHtml(report?.report_section8)}
         </ReportSectionComponent>
 
         <footer className={styles.footer}>
